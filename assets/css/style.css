@@ -1,10 +1,72 @@
 :root {
-    box-sizing: border-box;
-    font-size: 16px;
+  box-sizing: border-box;
+  font-size: 16px;
+  --main-bg: #f5f6fa;
+  --header-bg: #1e1e2f;
+  --footer-bg: #12121f;
+  --text-color: #222;
+  --accent-color: #4f46e5;
+  --border-radius: 10px;
+  --transition: 0.3s ease;
 }
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
 }
+
+body {
+  background-color: var(--main-bg);
+  color: var(--text-color);
+  font-family: "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+/* ---------- HEADER ---------- */
+header {
+  background-color: var(--header-bg);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+nav a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+nav a:hover {
+  color: var(--accent-color);
+}
+
+/* ---------- MAIN ---------- */
+main {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+}
+
+main:hover {
+  transform: translateY(-3px);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  background-color: var(--footer-bg);
+  color: #ccc;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #333;
+}
+
