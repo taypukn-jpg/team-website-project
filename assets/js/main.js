@@ -36,15 +36,15 @@ filterButtons.forEach(btn => {
 
 // Слайдер
 const slides = [
-    { src: "images/altai.jpg", caption: "Алтай таулары – керемет табиғат көрінісі." },
-    { src: "images/burabay.jpg", caption: "Бурабай – Қазақстанның «Кіші Швейцариясы»." },
-    { src: "images/sharyn.jpg", caption: "Шарын шатқалы – тарихи және табиғи ескерткіш." },
-    { src: "images/kolsai.jpg", caption: "Көлсай көлдері – таулы көлдер тізбегі." },
-    { src: "images/almaty.jpg", caption: "Алматы – мәдени және туристік орталық." },
-    { src: "images/koltaz.jpg", caption: "Көлтаз – тыныш табиғат аймағы." },
-    { src: "images/astana.jpg", caption: "Астана – заманауи сәулет және саябақтар." },
-    { src: "images/karatau.jpg", caption: "Қаратау – Қазақстанның әсем таулы аймағы." },
-    { src: "images/baikonur.jpg", caption: "Байқоңыр – ғарыш айлағы мен тарих." }
+    { src: "https://avatars.mds.yandex.net/i?id=447256547577cf1aa1dbe8bfffeb4d43c784662f-4306866-images-thumbs&n=13", caption: "Алтай таулары – керемет табиғат көрінісі." },
+    { src: "https://avatars.mds.yandex.net/i?id=88e86dbf49faac72671b826cd8e428f9b42c6c9a-16509561-images-thumbs&n=13", caption: "Бурабай – Қазақстанның «Кіші Швейцариясы»." },
+    { src: "https://cdn.nur.kz/images/1200x675/fd1d9d9b2ac051cd.jpeg?version=1", caption: "Шарын шатқалы – тарихи және табиғи ескерткіш." },
+    { src: "https://avatars.mds.yandex.net/i?id=56bdf728f91307aaddd493460129a8c335e0b012-9833563-images-thumbs&n=13", caption: "Көлсай көлдері – таулы көлдер тізбегі." },
+    { src: "https://avatars.mds.yandex.net/i?id=981121db6416f1fbc57f42b88ea87904d8fdaa4b-5889279-images-thumbs&n=13", caption: "Алматы – мәдени және туристік орталық." },
+    { src: "https://avatars.mds.yandex.net/i?id=19e454fef5cb70a3b23b560bd2f5b890_l-5669136-images-thumbs&n=13", caption: "Көлтаз – тыныш табиғат аймағы." },
+    { src: "https://avatars.mds.yandex.net/i?id=262f5d1d6c3eed23de75992c4056fa24c308cf57-4337876-images-thumbs&n=13", caption: "Астана – заманауи сәулет және саябақтар." },
+    { src: "https://avatars.mds.yandex.net/i?id=10adb2c211ba6d52df9b2263729827a2_l-5280263-images-thumbs&n=13", caption: "Қаратау – Қазақстанның әсем таулы аймағы." },
+    { src: "https://avatars.mds.yandex.net/i?id=1f32cab8047532d289281c7c4a7cd0b8_l-5221497-images-thumbs&n=13, caption: "Байқоңыр – ғарыш айлағы мен тарих." }
 ];
 
 let slideIndex = 0;
