@@ -186,6 +186,49 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!mapEl) console.warn('Элемент #mapid не найден — карта не инициализируется.');
     if (typeof L === 'undefined') console.warn('Leaflet не загружен (L === undefined). Проверьте подключение скрипта leaflet.js.');
   }
+  // ТІЛ ТАҢДАУ 
+const translations = {
+  kk: {
+    title: "Қазақстандағы Танымал Туристік Орындар",
+    filter: "Фильтр",
+    favorites: "Сүйікті орындар",
+    map: "Қазақстан картасы",
+    slider: "Танымал орындар",
+  },
+  ru: {
+    title: "Популярные туристические места Казахстана",
+    filter: "Фильтр",
+    favorites: "Избранные места",
+    map: "Карта Казахстана",
+    slider: "Популярные места",
+  },
+  en: {
+    title: "Popular Tourist Places in Kazakhstan",
+    filter: "Filter",
+    favorites: "Favorite Places",
+    map: "Map of Kazakhstan",
+    slider: "Famous Places",
+  },
+};
+
+const langSelect = document.getElementById("language-select");
+langSelect.addEventListener("change", () => {
+  const lang = langSelect.value;
+  document.getElementById("site-title").textContent = translations[lang].title;
+  document.querySelector("#filter h2").textContent = translations[lang].filter;
+  document.querySelector("#favorites h2").textContent = translations[lang].favorites;
+  document.querySelector("#map h2").textContent = translations[lang].map;
+  document.querySelector("#slider h2").textContent = translations[lang].slider;
+  localStorage.setItem("lang", lang);
+});
+
+// Сақталған тілді қайта қолдану
+window.addEventListener("load", () => {
+  const savedLang = localStorage.getItem("lang") || "kk";
+  langSelect.value = savedLang;
+  langSelect.dispatchEvent(new Event("change"));
+});
+
 
   // --- Debug helper (включи если нужно) ---
   // console.log({ placesCount: places.length, favorites, slidesLength: slides.length });
