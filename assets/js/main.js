@@ -194,15 +194,15 @@ const translations = {
     favorites: "Сүйікті орындар",
     slider: "Танымал орындар",
     places: [
-      { name: "Алтай таулары", desc: "Алтай таулары – керемет табиғат көрінісі.", img:"https://avatars.mds.yandex.net/i?id=447256547577cf1aa1dbe8bfffeb4d43c784662f-4306866-images-thumbs&n=13" },
-      { name: "Бурабай", desc: "Бурабай – Қазақстанның «Кіші Швейцариясы».", img:"https://avatars.mds.yandex.net/i?id=447256547577cf1aa1dbe8bfffeb4d43c784662f-4306866-images-thumbs&n=13" },
-      { name: "Шарын шатқалы", desc: "Шарын шатқалы – тарихи және табиғи ескерткіш.", img:"https://avatars.mds.yandex.net/i?id=447256547577cf1aa1dbe8bfffeb4d43c784662f-4306866-images-thumbs&n=13" },
-      { name: "Көлсай көлдері", desc: "Көлсай көлдері – таулы көлдер тізбегі.", img:"https://avatars.mds.yandex.net/i?id=447256547577cf1aa1dbe8bfffeb4d43c784662f-4306866-images-thumbs&n=13" },
-      { name: "Алматы қаласы", desc: "Алматы – мәдени және туристік орталық.", img:"https://avatars.mds.yandex.net/i?id=447256547577cf1aa1dbe8bfffeb4d43c784662f-4306866-images-thumbs&n=13" },
+      { name: "Алтай таулары", desc: "Алтай таулары – керемет табиғат көрінісі." },
+      { name: "Бурабай", desc: "Бурабай – Қазақстанның «Кіші Швейцариясы»." },
+      { name: "Шарын шатқалы", desc: "Шарын шатқалы – тарихи және табиғи ескерткіш." },
+      { name: "Көлсай көлдері", desc: "Көлсай көлдері – таулы көлдер тізбегі." },
+      { name: "Алматы қаласы", desc: "Алматы – мәдени және туристік орталық." },
       { name: "Көлтаз", desc: "Көлтаз – тыныш табиғат аймағы." },
-      { name: "Астана қаласы", desc: "Астана – заманауи сәулет және саябақтар.", img:"https://avatars.mds.yandex.net/i?id=447256547577cf1aa1dbe8bfffeb4d43c784662f-4306866-images-thumbs&n=13" },
-      { name: "Қаратау таулары", desc: "Қаратау – Қазақстанның әсем таулы аймағы.", img:"https://avatars.mds.yandex.net/i?id=447256547577cf1aa1dbe8bfffeb4d43c784662f-4306866-images-thumbs&n=13" },
-      { name: "Байқоңыр", desc: "Байқоңыр – ғарыш айлағы мен тарих.", img:"https://avatars.mds.yandex.net/i?id=447256547577cf1aa1dbe8bfffeb4d43c784662f-4306866-images-thumbs&n=13" }
+      { name: "Астана қаласы", desc: "Астана – заманауи сәулет және саябақтар." },
+      { name: "Қаратау таулары", desc: "Қаратау – Қазақстанның әсем таулы аймағы." },
+      { name: "Байқоңыр", desc: "Байқоңыр – ғарыш айлағы мен тарих." }
     ]
   },
   ru: {
@@ -296,17 +296,18 @@ window.addEventListener("load", () => {
   { name: "Байқоңыр", desc: "Ғарыш айлағы мен тарих.", price: "Путевка: 60 000 ₸", img: "https://avatars.mds.yandex.net/i?id=1f32cab8047532d289281c7c4a7cd0b8_l-5221497-images-thumbs&n=13" }
 ];
 
-const placeContainer = document.getElementById("places");
+const container = document.getElementById("places");
 
-translations.kk.places.forEach(place => {
+touristPlaces.forEach(place => {
     const div = document.createElement("div");
     div.classList.add("place");
     div.innerHTML = `
         <img src="assets/images/${place.img}" alt="${place.name}">
         <p><strong>${place.name}</strong></p>
         <p>${place.desc}</p>
+        <p><strong>${place.price}</strong></p>
     `;
-    placeContainer.appendChild(div);
+    container.appendChild(div);
 });
 
 
