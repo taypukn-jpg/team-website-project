@@ -186,41 +186,92 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!mapEl) console.warn('Элемент #mapid не найден — карта не инициализируется.');
     if (typeof L === 'undefined') console.warn('Leaflet не загружен (L === undefined). Проверьте подключение скрипта leaflet.js.');
   }
-  // ТІЛ ТАҢДАУ 
+ // === ТІЛДЕР БАЗАСЫ ===
 const translations = {
   kk: {
-    title: "Қазақстандағы Танымал Туристік Орындар",
-    filter: "Фильтр",
-    favorites: "Сүйікті орындар",
-    map: "Қазақстан картасы",
-    slider: "Танымал орындар",
+    title: "Қазақстандағы танымал туристік орындар",
+    places: [
+      { name: "Алтай таулары", desc: "Алтай таулары – керемет табиғат көрінісі." },
+      { name: "Бурабай", desc: "Бурабай – Қазақстанның «Кіші Швейцариясы»." },
+      { name: "Шарын шатқалы", desc: "Шарын шатқалы – тарихи және табиғи ескерткіш." },
+      { name: "Көлсай көлдері", desc: "Көлсай көлдері – таулы көлдер тізбегі." },
+      { name: "Алматы қаласы", desc: "Алматы – мәдени және туристік орталық." },
+      { name: "Көлтаз", desc: "Көлтаз – тыныш табиғат аймағы." },
+      { name: "Астана қаласы", desc: "Астана – заманауи сәулет және саябақтар." },
+      { name: "Қаратау таулары", desc: "Қаратау – Қазақстанның әсем таулы аймағы." },
+      { name: "Байқоңыр", desc: "Байқоңыр – ғарыш айлағы мен тарих." }
+    ]
   },
   ru: {
     title: "Популярные туристические места Казахстана",
-    filter: "Фильтр",
-    favorites: "Избранные места",
-    map: "Карта Казахстана",
-    slider: "Популярные места",
+    places: [
+      { name: "Горы Алтая", desc: "Алтайские горы — великолепная природная зона." },
+      { name: "Бурабай", desc: "Бурабай — «Маленькая Швейцария» Казахстана." },
+      { name: "Каньон Шарын", desc: "Шарынский каньон — исторический и природный памятник." },
+      { name: "Озера Кольсай", desc: "Кольсайские озера — цепочка горных озер." },
+      { name: "Город Алматы", desc: "Алматы — культурный и туристический центр." },
+      { name: "Кольтаз", desc: "Кольтаз — спокойная природная зона." },
+      { name: "Город Астана", desc: "Астана — современная архитектура и парки." },
+      { name: "Горы Каратау", desc: "Каратау — живописный горный регион." },
+      { name: "Байконур", desc: "Байконур — космодром и история." }
+    ]
   },
   en: {
     title: "Popular Tourist Places in Kazakhstan",
-    filter: "Filter",
-    favorites: "Favorite Places",
-    map: "Map of Kazakhstan",
-    slider: "Famous Places",
-  },
+    places: [
+      { name: "Altai Mountains", desc: "Altai Mountains — a magnificent natural landscape." },
+      { name: "Burabay", desc: "Burabay — the 'Little Switzerland' of Kazakhstan." },
+      { name: "Charyn Canyon", desc: "Charyn Canyon — a historical and natural wonder." },
+      { name: "Kolsai Lakes", desc: "Kolsai Lakes — a chain of mountain lakes." },
+      { name: "Almaty City", desc: "Almaty — a cultural and tourist hub." },
+      { name: "Koltaz", desc: "Koltaz — a peaceful natural area." },
+      { name: "Astana City", desc: "Astana — modern architecture and parks." },
+      { name: "Karatau Mountains", desc: "Karatau — a scenic mountain region." },
+      { name: "Baikonur", desc: "Baikonur — the spaceport of Kazakhstan." }
+    ]
+  }
 };
 
+// === ЭЛЕМЕНТТЕР ===
 const langSelect = document.getElementById("language-select");
+const siteTitle = document.getElementById("site-title");
+const placeContainer = document.getElementById("places");
+
+// === ФУНКЦИЯ: ТІЛДІ ЖАҢАРТУ ===
+function changeLanguage(lang) {
+  const data = translations[lang];
+  if (!data) return;
+
+  siteTitle.textContent = data.title;
+
+  // контейнерді тазалап, жаңа мәлімет қосамыз
+  placeContainer.innerHTML = "";
+
+  data.places.forEach((place) => {
+    const div = document.createElement("div");
+    div.classList.add("place");
+    div.innerHTML = `
+      <img src="assets/images/${place.name.toLowerCase().split(" ")[0]}.jpg" alt="${place.name}">
+      <p>${place.desc}</p>
+    `;
+    placeContainer.appendChild(div);
+  });
+}
+
+// === ОҚИҒАЛАР ===
 langSelect.addEventListener("change", () => {
   const lang = langSelect.value;
-  document.getElementById("site-title").textContent = translations[lang].title;
-  document.querySelector("#filter h2").textContent = translations[lang].filter;
-  document.querySelector("#favorites h2").textContent = translations[lang].favorites;
-  document.querySelector("#map h2").textContent = translations[lang].map;
-  document.querySelector("#slider h2").textContent = translations[lang].slider;
   localStorage.setItem("lang", lang);
+  changeLanguage(lang);
 });
+
+// === ЖҮКТЕГЕНДЕ ТЕКСЕРУ ===
+window.addEventListener("load", () => {
+  const savedLang = localStorage.getItem("lang") || "kk";
+  langSelect.value = savedLang;
+  changeLanguage(savedLang);
+});
+
 
 // Сақталған тілді қайта қолдану
 window.addEventListener("load", () => {
