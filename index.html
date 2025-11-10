@@ -5,35 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Қазақстан туризм</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 </head>
 <body>
     <header>
         <h1>Қазақстандағы Танымал Туристік Орындар</h1>
     </header>
 
+    <!-- Фильтр -->
+    <section id="filter">
+        <h2>Фильтр</h2>
+        <button data-type="all">Барлығы</button>
+        <button data-type="тау">Тау</button>
+        <button data-type="өзен">Өзен</button>
+        <button data-type="қала">Қала</button>
+    </section>
+
+    <!-- Галерея -->
     <section id="gallery">
         <h2>Галерея</h2>
         <div class="places">
-            <div class="place" data-name="Алтай таулары">
+            <div class="place" data-name="Алтай таулары" data-type="тау">
                 <img src="https://avatars.mds.yandex.net/i?id=447256547577cf1aa1dbe8bfffeb4d43c784662f-4306866-images-thumbs&n=13" alt="Алтай таулары">
                 <p>Алтай таулары – керемет табиғат көрінісі.</p>
             </div>
-            <div class="place" data-name="Бурабай">
+            <div class="place" data-name="Бурабай" data-type="тау">
                 <img src="https://avatars.mds.yandex.net/i?id=88e86dbf49faac72671b826cd8e428f9b42c6c9a-16509561-images-thumbs&n=13" alt="Бурабай">
                 <p>Бурабай – Қазақстанның «Кіші Швейцариясы».</p>
             </div>
-            <div class="place" data-name="Шарын шатқалы">
+            <div class="place" data-name="Шарын шатқалы" data-type="өзен">
                 <img src="https://cdn.nur.kz/images/1200x675/fd1d9d9b2ac051cd.jpeg?version=1" alt="Шарын шатқалы">
                 <p>Шарын шатқалы – тарихи және табиғи ескерткіш.</p>
             </div>
         </div>
     </section>
 
+    <!-- Слайдер -->
+    <section id="slider">
+        <h2>Танымал орындар</h2>
+        <div class="slide-container">
+            <img id="slide-image" src="images/altai.jpg" alt="">
+            <button id="prev">◀</button>
+            <button id="next">▶</button>
+        </div>
+    </section>
+
+    <!-- Сүйікті орындар -->
     <section id="favorites">
         <h2>Сүйікті орындар</h2>
         <ul id="fav-list"></ul>
     </section>
 
+    <!-- Карта -->
+    <section id="map">
+        <h2>Қазақстан картасы</h2>
+        <div id="mapid" style="height: 400px;"></div>
+    </section>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
+
