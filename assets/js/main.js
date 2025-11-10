@@ -284,6 +284,32 @@ window.addEventListener("load", () => {
   langSelect.value = savedLang;
   changeLanguage(savedLang);
 });
+ const touristPlaces = [
+  { name: "Алтай таулары", desc: "Керемет табиғат көрінісі.", price: "Путевка: 50 000 ₸" },
+  { name: "Бурабай", desc: "Кіші Швейцариясы.", price: "Путевка: 40 000 ₸" },
+  { name: "Шарын шатқалы", desc: "Тарихи ескерткіш.", price: "Путевка: 30 000 ₸" },
+  { name: "Көлсай көлдері", desc: "Таулы көлдер тізбегі.", price: "Путевка: 45 000 ₸" },
+  { name: "Алматы қаласы", desc: "Мәдени және туристік орталық.", price: "Путевка: 35 000 ₸" },
+  { name: "Көлтаз", desc: "Тыныш табиғат аймағы.", price: "Путевка: 25 000 ₸" },
+  { name: "Астана қаласы", desc: "Заманауи сәулет және саябақтар.", price: "Путевка: 30 000 ₸" },
+  { name: "Қаратау таулары", desc: "Әсем таулы аймақ.", price: "Путевка: 40 000 ₸" },
+  { name: "Байқоңыр", desc: "Ғарыш айлағы мен тарих.", price: "Путевка: 60 000 ₸" }
+];
+
+const container = document.getElementById("places");
+
+touristPlaces.forEach(place => {
+    const div = document.createElement("div");
+    div.classList.add("place");
+    div.innerHTML = `
+        <img src="assets/images/${place.name.toLowerCase().split(" ")[0]}.jpg" alt="${place.name}">
+        <p><strong>${place.name}</strong></p>
+        <p>${place.desc}</p>
+        <p><strong>${place.price}</strong></p>
+    `;
+    container.appendChild(div);
+});
+
 
 
   // --- Debug helper (включи если нужно) ---
