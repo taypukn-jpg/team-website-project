@@ -229,6 +229,65 @@ window.addEventListener("load", () => {
   langSelect.dispatchEvent(new Event("change"));
 });
 
+// ====== ГАЛЕРЕЯ және СЛАЙДЕР МӘТІНДЕРІН АУЫСТЫРУ ======
+const placeTranslations = {
+  kk: [
+    { name: "Алтай таулары", desc: "Алтай таулары – керемет табиғат көрінісі." },
+    { name: "Бурабай", desc: "Бурабай – Қазақстанның «Кіші Швейцариясы»." },
+    { name: "Шарын шатқалы", desc: "Шарын шатқалы – тарихи және табиғи ескерткіш." },
+    { name: "Көлсай көлдері", desc: "Көлсай көлдері – таулы көлдер тізбегі." },
+    { name: "Алматы қаласы", desc: "Алматы – мәдени және туристік орталық." },
+    { name: "Көлтаз", desc: "Көлтаз – тыныш табиғат аймағы." },
+    { name: "Астана қаласы", desc: "Астана – заманауи сәулет және саябақтар." },
+    { name: "Қаратау таулары", desc: "Қаратау – Қазақстанның әсем таулы аймағы." },
+    { name: "Байқоңыр", desc: "Байқоңыр – ғарыш айлағы мен тарих." }
+  ],
+  ru: [
+    { name: "Горы Алтая", desc: "Алтайские горы — великолепная природная зона." },
+    { name: "Бурабай", desc: "Бурабай — «Маленькая Швейцария» Казахстана." },
+    { name: "Каньон Шарын", desc: "Шарынский каньон — исторический и природный памятник." },
+    { name: "Озера Кольсай", desc: "Кольсайские озера — цепочка горных озер." },
+    { name: "Город Алматы", desc: "Алматы — культурный и туристический центр." },
+    { name: "Кольтаз", desc: "Кольтаз — спокойная природная зона." },
+    { name: "Город Астана", desc: "Астана — современная архитектура и парки." },
+    { name: "Горы Каратау", desc: "Каратау — живописный горный регион." },
+    { name: "Байконур", desc: "Байконур — космодром и история." }
+  ],
+  en: [
+    { name: "Altai Mountains", desc: "Altai Mountains — a magnificent natural landscape." },
+    { name: "Burabay", desc: "Burabay — the 'Little Switzerland' of Kazakhstan." },
+    { name: "Charyn Canyon", desc: "Charyn Canyon — a historical and natural wonder." },
+    { name: "Kolsai Lakes", desc: "Kolsai Lakes — a chain of mountain lakes." },
+    { name: "Almaty City", desc: "Almaty — a cultural and tourist hub." },
+    { name: "Koltaz", desc: "Koltaz — a peaceful natural area." },
+    { name: "Astana City", desc: "Astana — modern architecture and parks." },
+    { name: "Karatau Mountains", desc: "Karatau — a scenic mountain region." },
+    { name: "Baikonur", desc: "Baikonur — the spaceport of Kazakhstan." }
+  ]
+};
+
+// ====== ФУНКЦИЯ: галерея және слайдерді тілге сай жаңарту ======
+function updatePlaceTexts(lang) {
+  const placesList = document.querySelectorAll('.place');
+  const slides = placeTranslations[lang];
+
+  if (!slides) return; // егер тіл табылмаса, тоқтаймыз
+
+  placesList.forEach((place, index) => {
+    const img = place.querySelector('img');
+    const p = place.querySelector('p');
+    if (slides[index]) {
+      img.alt = slides[index].name;
+      p.textContent = slides[index].desc;
+    }
+  });
+
+  // Егер слайдер қолдансаң — оны да жаңарту:
+  if (typeof showSlide === "function") {
+    window.slideData = slides;
+    showSlide(window.slideIndex || 0);
+  }
+}
 
   // --- Debug helper (включи если нужно) ---
   // console.log({ placesCount: places.length, favorites, slidesLength: slides.length });
