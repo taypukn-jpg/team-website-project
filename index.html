@@ -1,37 +1,39 @@
 <!DOCTYPE html>
-<html lang='ru'>
+<html lang="kk">
 <head>
-  <meta charset='UTF-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <title>Мой сайт</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Қазақстан туризм</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<head>
-  <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<head>
-  <link href="https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
-</head>
-<header>
-
-  <h1>Мой личный сайт</h1>
-  <nav>
-    <a href="#">Главная</a>
-    <a href="#">Обо мне</a>
-    <a href="#">Контакты</a>
-  </nav>
-</header>
 <body>
-<h1>Сайтқа қош келдің!</h1>
-  <button id="btn">Мені бас</button>
-<script src="assets/js/main.js"></script>
+    <header>
+        <h1>Қазақстандағы Танымал Туристік Орындар</h1>
+    </header>
+
+    <section id="gallery">
+        <h2>Галерея</h2>
+        <div class="places">
+            <div class="place" data-name="Алтай таулары">
+                <img src="images/altai.jpg" alt="Алтай таулары">
+                <p>Алтай таулары – керемет табиғат көрінісі.</p>
+            </div>
+            <div class="place" data-name="Бурабай">
+                <img src="images/burabay.jpg" alt="Бурабай">
+                <p>Бурабай – Қазақстанның «Кіші Швейцариясы».</p>
+            </div>
+            <div class="place" data-name="Шарын шатқалы">
+                <img src="images/sharyn.jpg" alt="Шарын шатқалы">
+                <p>Шарын шатқалы – тарихи және табиғи ескерткіш.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="favorites">
+        <h2>Сүйікті орындар</h2>
+        <ul id="fav-list"></ul>
+    </section>
+
+    <script src="main.js"></script>
 </body>
-<main>
-  <section>
-    <h2>Өзім жайлы</h2>
-    <p>Менің атым Нұрислам мен git-ты үйреніп жатырмын!</p>
-  </section>
-</main>
-<footer>
-  <p>© 2025 Нурислам. Барлық құқықтар қорғалды.</p>
-</footer>
 </html>
