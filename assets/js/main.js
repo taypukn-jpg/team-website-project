@@ -30,15 +30,15 @@ function updateFavorites() {
 // Слайдер үшін суреттер мен сипаттамалар
 const slides = [
     {
-        src: "images/altai.jpg",
+        src: "https://avatars.mds.yandex.net/i?id=447256547577cf1aa1dbe8bfffeb4d43c784662f-4306866-images-thumbs&n=13",
         caption: "Алтай таулары – керемет табиғат көрінісі."
     },
     {
-        src: "images/burabay.jpg",
+        src: "https://avatars.mds.yandex.net/i?id=88e86dbf49faac72671b826cd8e428f9b42c6c9a-16509561-images-thumbs&n=13",
         caption: "Бурабай – Қазақстанның «Кіші Швейцариясы»."
     },
     {
-        src: "images/sharyn.jpg",
+        src: "https://cdn.nur.kz/images/1200x675/fd1d9d9b2ac051cd.jpeg?version=1",
         caption: "Шарын шатқалы – тарихи және табиғи ескерткіш."
     }
 ];
