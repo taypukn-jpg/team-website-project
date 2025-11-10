@@ -284,17 +284,6 @@ window.addEventListener("load", () => {
   langSelect.value = savedLang;
   changeLanguage(savedLang);
 });
- const touristPlaces = [
-  { name: "Алтай таулары", desc: "Керемет табиғат көрінісі.", price: "Путевка: 50 000 ₸", img: "https://avatars.mds.yandex.net/i?id=447256547577cf1aa1dbe8bfffeb4d43c784662f-4306866-images-thumbs&n=13" },
-  { name: "Бурабай", desc: "Кіші Швейцариясы.", price: "Путевка: 40 000 ₸", img: "https://avatars.mds.yandex.net/i?id=88e86dbf49faac72671b826cd8e428f9b42c6c9a-16509561-images-thumbs&n=13" },
-  { name: "Шарын шатқалы", desc: "Тарихи ескерткіш.", price: "Путевка: 30 000 ₸", img: "https://cdn.nur.kz/images/1200x675/fd1d9d9b2ac051cd.jpeg?version=1" },
-  { name: "Көлсай көлдері", desc: "Таулы көлдер тізбегі.", price: "Путевка: 45 000 ₸", img: "https://avatars.mds.yandex.net/i?id=56bdf728f91307aaddd493460129a8c335e0b012-9833563-images-thumbs&n=13" },
-  { name: "Алматы қаласы", desc: "Мәдени және туристік орталық.", price: "Путевка: 35 000 ₸", img: "https://avatars.mds.yandex.net/i?id=981121db6416f1fbc57f42b88ea87904d8fdaa4b-5889279-images-thumbs&n=13" },
-  { name: "Көлтаз", desc: "Тыныш табиғат аймағы.", price: "Путевка: 25 000 ₸", img: "https://avatars.mds.yandex.net/i?id=19e454fef5cb70a3b23b560bd2f5b890_l-5669136-images-thumbs&n=13" },
-  { name: "Астана қаласы", desc: "Заманауи сәулет және саябақтар.", price: "Путевка: 30 000 ₸", img: "https://avatars.mds.yandex.net/i?id=262f5d1d6c3eed23de75992c4056fa24c308cf57-4337876-images-thumbs&n=13" },
-  { name: "Қаратау таулары", desc: "Әсем таулы аймақ.", price: "Путевка: 40 000 ₸", img: "https://avatars.mds.yandex.net/i?id=10adb2c211ba6d52df9b2263729827a2_l-5280263-images-thumbs&n=13" },
-  { name: "Байқоңыр", desc: "Ғарыш айлағы мен тарих.", price: "Путевка: 60 000 ₸", img: "https://avatars.mds.yandex.net/i?id=1f32cab8047532d289281c7c4a7cd0b8_l-5221497-images-thumbs&n=13" }
-];
 
 const container = document.getElementById("places");
 
