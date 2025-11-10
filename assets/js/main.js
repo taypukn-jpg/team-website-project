@@ -186,10 +186,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!mapEl) console.warn('Элемент #mapid не найден — карта не инициализируется.');
     if (typeof L === 'undefined') console.warn('Leaflet не загружен (L === undefined). Проверьте подключение скрипта leaflet.js.');
   }
- // === ТІЛДЕР БАЗАСЫ ===
+ // ====== Деректер (3 тілде) ======
 const translations = {
   kk: {
-    title: "Қазақстандағы танымал туристік орындар",
+    siteTitle: "Қазақстандағы танымал туристік орындар",
+    filter: "Фильтр",
+    favorites: "Сүйікті орындар",
+    slider: "Танымал орындар",
     places: [
       { name: "Алтай таулары", desc: "Алтай таулары – керемет табиғат көрінісі." },
       { name: "Бурабай", desc: "Бурабай – Қазақстанның «Кіші Швейцариясы»." },
@@ -203,7 +206,10 @@ const translations = {
     ]
   },
   ru: {
-    title: "Популярные туристические места Казахстана",
+    siteTitle: "Популярные туристические места Казахстана",
+    filter: "Фильтр",
+    favorites: "Избранные места",
+    slider: "Популярные места",
     places: [
       { name: "Горы Алтая", desc: "Алтайские горы — великолепная природная зона." },
       { name: "Бурабай", desc: "Бурабай — «Маленькая Швейцария» Казахстана." },
@@ -217,7 +223,10 @@ const translations = {
     ]
   },
   en: {
-    title: "Popular Tourist Places in Kazakhstan",
+    siteTitle: "Popular Tourist Places in Kazakhstan",
+    filter: "Filter",
+    favorites: "Favorite Places",
+    slider: "Famous Places",
     places: [
       { name: "Altai Mountains", desc: "Altai Mountains — a magnificent natural landscape." },
       { name: "Burabay", desc: "Burabay — the 'Little Switzerland' of Kazakhstan." },
@@ -232,21 +241,26 @@ const translations = {
   }
 };
 
-// === ЭЛЕМЕНТТЕР ===
+// ====== Элементтер ======
 const langSelect = document.getElementById("language-select");
 const siteTitle = document.getElementById("site-title");
+const filterTitle = document.querySelector("#filter h2");
+const favoritesTitle = document.querySelector("#favorites h2");
+const sliderTitle = document.querySelector("#slider h2");
 const placeContainer = document.getElementById("places");
 
-// === ФУНКЦИЯ: ТІЛДІ ЖАҢАРТУ ===
+// ====== Функция: тілге сай мәтіндер ======
 function changeLanguage(lang) {
   const data = translations[lang];
   if (!data) return;
 
-  siteTitle.textContent = data.title;
+  siteTitle.textContent = data.siteTitle;
+  filterTitle.textContent = data.filter;
+  favoritesTitle.textContent = data.favorites;
+  sliderTitle.textContent = data.slider;
 
-  // контейнерді тазалап, жаңа мәлімет қосамыз
+  // Галереяны тазалап, жаңа мәліметтерді қосу
   placeContainer.innerHTML = "";
-
   data.places.forEach((place) => {
     const div = document.createElement("div");
     div.classList.add("place");
@@ -258,87 +272,19 @@ function changeLanguage(lang) {
   });
 }
 
-// === ОҚИҒАЛАР ===
+// ====== Оқиғалар ======
 langSelect.addEventListener("change", () => {
   const lang = langSelect.value;
   localStorage.setItem("lang", lang);
   changeLanguage(lang);
 });
 
-// === ЖҮКТЕГЕНДЕ ТЕКСЕРУ ===
 window.addEventListener("load", () => {
   const savedLang = localStorage.getItem("lang") || "kk";
   langSelect.value = savedLang;
   changeLanguage(savedLang);
 });
 
-
-// Сақталған тілді қайта қолдану
-window.addEventListener("load", () => {
-  const savedLang = localStorage.getItem("lang") || "kk";
-  langSelect.value = savedLang;
-  langSelect.dispatchEvent(new Event("change"));
-});
-
-// ====== ГАЛЕРЕЯ және СЛАЙДЕР МӘТІНДЕРІН АУЫСТЫРУ ======
-const placeTranslations = {
-  kk: [
-    { name: "Алтай таулары", desc: "Алтай таулары – керемет табиғат көрінісі." },
-    { name: "Бурабай", desc: "Бурабай – Қазақстанның «Кіші Швейцариясы»." },
-    { name: "Шарын шатқалы", desc: "Шарын шатқалы – тарихи және табиғи ескерткіш." },
-    { name: "Көлсай көлдері", desc: "Көлсай көлдері – таулы көлдер тізбегі." },
-    { name: "Алматы қаласы", desc: "Алматы – мәдени және туристік орталық." },
-    { name: "Көлтаз", desc: "Көлтаз – тыныш табиғат аймағы." },
-    { name: "Астана қаласы", desc: "Астана – заманауи сәулет және саябақтар." },
-    { name: "Қаратау таулары", desc: "Қаратау – Қазақстанның әсем таулы аймағы." },
-    { name: "Байқоңыр", desc: "Байқоңыр – ғарыш айлағы мен тарих." }
-  ],
-  ru: [
-    { name: "Горы Алтая", desc: "Алтайские горы — великолепная природная зона." },
-    { name: "Бурабай", desc: "Бурабай — «Маленькая Швейцария» Казахстана." },
-    { name: "Каньон Шарын", desc: "Шарынский каньон — исторический и природный памятник." },
-    { name: "Озера Кольсай", desc: "Кольсайские озера — цепочка горных озер." },
-    { name: "Город Алматы", desc: "Алматы — культурный и туристический центр." },
-    { name: "Кольтаз", desc: "Кольтаз — спокойная природная зона." },
-    { name: "Город Астана", desc: "Астана — современная архитектура и парки." },
-    { name: "Горы Каратау", desc: "Каратау — живописный горный регион." },
-    { name: "Байконур", desc: "Байконур — космодром и история." }
-  ],
-  en: [
-    { name: "Altai Mountains", desc: "Altai Mountains — a magnificent natural landscape." },
-    { name: "Burabay", desc: "Burabay — the 'Little Switzerland' of Kazakhstan." },
-    { name: "Charyn Canyon", desc: "Charyn Canyon — a historical and natural wonder." },
-    { name: "Kolsai Lakes", desc: "Kolsai Lakes — a chain of mountain lakes." },
-    { name: "Almaty City", desc: "Almaty — a cultural and tourist hub." },
-    { name: "Koltaz", desc: "Koltaz — a peaceful natural area." },
-    { name: "Astana City", desc: "Astana — modern architecture and parks." },
-    { name: "Karatau Mountains", desc: "Karatau — a scenic mountain region." },
-    { name: "Baikonur", desc: "Baikonur — the spaceport of Kazakhstan." }
-  ]
-};
-
-// ====== ФУНКЦИЯ: галерея және слайдерді тілге сай жаңарту ======
-function updatePlaceTexts(lang) {
-  const placesList = document.querySelectorAll('.place');
-  const slides = placeTranslations[lang];
-
-  if (!slides) return; // егер тіл табылмаса, тоқтаймыз
-
-  placesList.forEach((place, index) => {
-    const img = place.querySelector('img');
-    const p = place.querySelector('p');
-    if (slides[index]) {
-      img.alt = slides[index].name;
-      p.textContent = slides[index].desc;
-    }
-  });
-
-  // Егер слайдер қолдансаң — оны да жаңарту:
-  if (typeof showSlide === "function") {
-    window.slideData = slides;
-    showSlide(window.slideIndex || 0);
-  }
-}
 
   // --- Debug helper (включи если нужно) ---
   // console.log({ placesCount: places.length, favorites, slidesLength: slides.length });
