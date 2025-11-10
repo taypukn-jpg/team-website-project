@@ -54,6 +54,7 @@ h1, h2 {
 #slider { text-align: center; padding: 20px; }
 .slide-container { position: relative; display: inline-block; }
 #slide-image { width: 500px; height: 300px; object-fit: cover; border-radius: 10px; }
+#slide-caption { margin-top: 10px; font-weight: bold; }
 #prev, #next {
     position: absolute;
     top: 50%;
@@ -67,6 +68,7 @@ h1, h2 {
 }
 #prev { left: -50px; }
 #next { right: -50px; }
+
 
 /* Сүйікті орындар */
 #favorites { padding: 20px; background: #e6f2ff; }

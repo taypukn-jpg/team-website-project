@@ -27,18 +27,47 @@ function updateFavorites() {
     });
 }
 
-// Слайдер
-const images = ["images/altai.jpg", "images/burabay.jpg", "images/sharyn.jpg"];
-let index = 0;
+// Слайдер үшін суреттер мен сипаттамалар
+const slides = [
+    {
+        src: "images/altai.jpg",
+        caption: "Алтай таулары – керемет табиғат көрінісі."
+    },
+    {
+        src: "images/burabay.jpg",
+        caption: "Бурабай – Қазақстанның «Кіші Швейцариясы»."
+    },
+    {
+        src: "images/sharyn.jpg",
+        caption: "Шарын шатқалы – тарихи және табиғи ескерткіш."
+    }
+];
+
+let slideIndex = 0;
 const slideImage = document.getElementById('slide-image');
-document.getElementById('prev').addEventListener('click', () => {
-    index = (index - 1 + images.length) % images.length;
-    slideImage.src = images[index];
+const slideCaption = document.getElementById('slide-caption');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+
+function showSlide(index) {
+    slideImage.src = slides[index].src;
+    slideCaption.textContent = slides[index].caption;
+}
+
+// Стрелкаларға басу оқиғалары
+prevBtn.addEventListener('click', () => {
+    slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+    showSlide(slideIndex);
 });
-document.getElementById('next').addEventListener('click', () => {
-    index = (index + 1) % images.length;
-    slideImage.src = images[index];
+
+nextBtn.addEventListener('click', () => {
+    slideIndex = (slideIndex + 1) % slides.length;
+    showSlide(slideIndex);
 });
+
+// Бастапқы көрсетілім
+showSlide(slideIndex);
+
 
 // Фильтр
 const filterButtons = document.querySelectorAll('#filter button');
