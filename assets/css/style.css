@@ -1,84 +1,174 @@
+/* Основной стиль — минимализм */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom, #cceeff, #ffffff);
-    color: #333;
+    background: #f6f7f9;
+    color: #222;
 }
 
+/* Шапка */
 header {
-    background: #1e5f4a;
-    color: white;
+    background: #ffffff;
+    color: #111;
     padding: 25px;
     text-align: center;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-bottom: 1px solid #e5e7eb;
 }
 
-h1 { font-size: 2.2rem; }
-h2 { font-size: 1.5rem; margin: 15px 0; }
+h1 { font-size: 2rem; font-weight: 600; }
+h2 { font-size: 1.4rem; margin: 20px 0; font-weight: 500; }
 
 /* Фильтр */
-#filter { text-align: center; padding: 20px; }
-#filter button {
-    margin: 5px;
-    padding: 12px 20px;
-    cursor: pointer;
-    border: none;
-    background: #1e5f4a;
-    color: white;
-    border-radius: 10px;
-    font-weight: bold;
-    transition: background 0.3s, transform 0.2s;
+#filter {
+    text-align: center;
+    padding: 20px;
 }
-#filter button:hover { background: #28a073; transform: scale(1.05); }
+
+#filter button {
+    margin: 6px;
+    padding: 10px 18px;
+    cursor: pointer;
+    background: #fff;
+    color: #111;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: 0.25s;
+}
+
+#filter button:hover {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+    transform: translateY(-2px);
+}
 
 /* Галерея */
-#gallery { padding: 20px; }
+#gallery {
+    padding: 10px 20px 40px;
+}
+
 .places {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
     justify-content: center;
 }
+
 .place {
-    border: 1px solid #ccc;
-    border-radius: 15px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
     overflow: hidden;
-    width: 260px;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-    background: #ffffffcc;
+    transition: 0.3s;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
-.place img { width: 100%; height: 160px; object-fit: cover; }
-.place p { padding: 10px; text-align: center; font-size: 0.9rem; }
-.place:hover { transform: scale(1.07); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+
+.place img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.place p {
+    padding: 12px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.place:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
 
 /* Слайдер */
-#slider { text-align: center; padding: 30px 20px; background: #e0f7fa; border-radius: 15px; margin: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);}
-.slide-container { position: relative; display: inline-block; }
-#slide-image { width: 550px; height: 320px; object-fit: cover; border-radius: 15px; }
-#slide-caption { margin-top: 12px; font-weight: bold; font-size: 1.1rem; color: #1e5f4a; }
+#slider {
+    text-align: center;
+    padding: 30px 20px;
+    background: #ffffff;
+    border-radius: 20px;
+    margin: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    border: 1px solid #e5e7eb;
+}
+
+.slide-container {
+    position: relative;
+    display: inline-block;
+}
+
+#slide-image {
+    width: 550px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+}
+
+#slide-caption {
+    margin-top: 15px;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #0f766e;
+}
+
+/* Стрелки */
 #prev, #next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(30,95,74,0.8);
-    color: white;
-    border: none;
-    padding: 12px;
+    background: white;
+    border: 1px solid #d1d5db;
+    padding: 10px 12px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 18px;
     border-radius: 50%;
-    transition: background 0.3s;
+    transition: 0.3s;
 }
-#prev:hover, #next:hover { background: #28a073; }
+
+#prev:hover,
+#next:hover {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+}
+
 #prev { left: -60px; }
 #next { right: -60px; }
 
 /* Сүйікті орындар */
-#favorites { padding: 25px; background: #d0f0fd; border-radius: 10px; margin: 20px; }
-#favorites ul { list-style: none; padding: 0; }
-#favorites li { padding: 8px 0; font-size: 1rem; }
+#favorites {
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 14px;
+    margin: 25px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+    border: 1px solid #e5e7eb;
+}
+
+#favorites ul {
+    list-style: none;
+    padding: 0;
+}
+
+#favorites li {
+    padding: 8px 2px;
+    font-size: 1rem;
+    color: #333;
+    border-bottom: 1px solid #f0f0f0;
+}
 
 /* Карта */
-#map { padding: 20px; margin: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); background: #f5f5f5; }
+#map {
+    padding: 0;
+    margin: 25px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+}
+
