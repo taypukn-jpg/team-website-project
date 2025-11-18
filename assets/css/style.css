@@ -1,24 +1,25 @@
-/* Основной стиль — минимализм */
+/* ЧИСТЫЙ, КРАСИВЫЙ, СОВРЕМЕННЫЙ ДИЗАЙН (НЕ МИНИМАЛИЗМ, А ЯРКО, АККУРАТНО, ПРЕМИУМ) */
+
 body {
-    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: #f6f7f9;
+    background: linear-gradient(135deg, #e3f6ff, #ffffff 40%, #e3ffe9);
     color: #222;
 }
 
 /* Шапка */
 header {
-    background: #ffffff;
-    color: #111;
-    padding: 25px;
+    background: linear-gradient(90deg, #009688, #26a69a);
+    color: white;
+    padding: 30px;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border-bottom: 3px solid #00796b;
 }
 
-h1 { font-size: 2rem; font-weight: 600; }
-h2 { font-size: 1.4rem; margin: 20px 0; font-weight: 500; }
+h1 { font-size: 2.5rem; font-weight: 700; text-shadow: 0 2px 5px rgba(0,0,0,0.15); }
+h2 { font-size: 1.6rem; margin: 20px 0; font-weight: 600; }
 
 /* Фильтр */
 #filter {
@@ -28,149 +29,146 @@ h2 { font-size: 1.4rem; margin: 20px 0; font-weight: 500; }
 
 #filter button {
     margin: 6px;
-    padding: 10px 18px;
+    padding: 12px 26px;
     cursor: pointer;
-    background: #fff;
-    color: #111;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-weight: 500;
+    background: linear-gradient(45deg, #26a69a, #2bbbad);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
     transition: 0.25s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 #filter button:hover {
-    background: #10b981;
-    color: white;
-    border-color: #10b981;
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
 
 /* Галерея */
 #gallery {
-    padding: 10px 20px 40px;
+    padding: 20px 30px 50px;
 }
 
 .places {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px;
     justify-content: center;
 }
 
 .place {
     background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 14px;
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: 0.35s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    border: 2px solid #e0f2f1;
 }
 
 .place img {
     width: 100%;
-    height: 160px;
+    height: 180px;
     object-fit: cover;
 }
 
 .place p {
-    padding: 12px;
+    padding: 14px;
     text-align: center;
-    font-size: 0.95rem;
-    color: #444;
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
 }
 
 .place:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    border-color: #009688;
 }
 
 /* Слайдер */
 #slider {
     text-align: center;
-    padding: 30px 20px;
+    padding: 35px 20px;
     background: #ffffff;
-    border-radius: 20px;
+    border-radius: 25px;
     margin: 25px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    border: 1px solid #e5e7eb;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    border: 2px solid #e0f7fa;
 }
 
-.slide-container {
-    position: relative;
-    display: inline-block;
-}
+.slide-container { position: relative; display: inline-block; }
 
 #slide-image {
-    width: 550px;
-    height: 320px;
+    width: 600px;
+    height: 350px;
     object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    border: 3px solid #80deea;
 }
 
 #slide-caption {
-    margin-top: 15px;
-    font-size: 1.05rem;
-    font-weight: 500;
-    color: #0f766e;
+    margin-top: 18px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #00695c;
 }
 
-/* Стрелки */
 #prev, #next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: white;
-    border: 1px solid #d1d5db;
-    padding: 10px 12px;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 50%;
-    transition: 0.3s;
-}
-
-#prev:hover,
-#next:hover {
-    background: #10b981;
+    background: #009688;
     color: white;
-    border-color: #10b981;
+    border: none;
+    padding: 14px 16px;
+    cursor: pointer;
+    font-size: 22px;
+    border-radius: 50%;
+    transition: 0.25s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-#prev { left: -60px; }
-#next { right: -60px; }
+#prev:hover, #next:hover {
+    background: #26a69a;
+    transform: translateY(-50%) scale(1.1);
+}
+
+#prev { left: -70px; }
+#next { right: -70px; }
 
 /* Сүйікті орындар */
 #favorites {
     padding: 25px;
     background: #ffffff;
-    border-radius: 14px;
-    margin: 25px;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.05);
-    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    margin: 30px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    border: 2px solid #b2dfdb;
 }
 
-#favorites ul {
-    list-style: none;
-    padding: 0;
-}
+#favorites ul { list-style: none; padding: 0; }
 
 #favorites li {
-    padding: 8px 2px;
-    font-size: 1rem;
-    color: #333;
-    border-bottom: 1px solid #f0f0f0;
+    padding: 10px 2px;
+    font-size: 1.1rem;
+    color: #004d40;
+    border-bottom: 1px solid #e0f2f1;
+    font-weight: 500;
 }
 
-/* Карта */
-<<<<<<< HEAD
-#map {
-    padding: 0;
-    margin: 25px;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    border: 1px solid #e5e7eb;
-=======
+#favorites li:last-child { border-bottom: none; }
 
+/* Карта */
+#map {
+    margin: 30px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 3px solid #80cbc4;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
 
