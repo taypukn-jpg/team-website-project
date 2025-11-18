@@ -89,26 +89,18 @@ filterButtons.forEach(btn => {
     });
 });
 
-// ====== MAP ======
-  if (typeof L !== 'undefined' && mapEl) {
-    try {
-      const map = L.map('mapid').setView([48.0, 66.9], 5);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-      }).addTo(map);
+// Карта
+const map = L.map('mapid').setView([48.0, 66.9], 5); // Қазақстан ортасы
 
-      const markers = [
-        { coords:[49.5,86.0], name:'Алтай таулары' },
-        { coords:[53.0,71.5], name:'Бурабай' },
-        { coords:[43.2,79.1], name:'Шарын шатқалы' },
-        { coords:[45.5,79.2], name:'Көлсай көлдері' },
-        { coords:[43.2,76.9], name:'Алматы' },
-        { coords:[43.0,78.5], name:'Көлтаз' },
-        { coords:[51.2,71.4], name:'Астана' },
-        { coords:[43.5,69.8], name:'Қаратау' },
-        { coords:[45.6,63.3], name:'Байқоңыр' }
-      ];
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-      markers.forEach(m => L.marker(m.coords).addTo(map).bindPopup(m.name));
+L.marker([49.5, 86.0]).addTo(map).bindPopup('Алтай таулары');
+L.marker([53.0, 71.5]).addTo(map).bindPopup('Бурабай');
+L.marker([43.2, 79.1]).addTo(map).bindPopup('Шарын шатқалы');
+L.marker([45.5, 79.2]).addTo(map).bindPopup('Көлсай көлдері');
+L.marker([43.2, 76.9]).addTo(map).bindPopup('Алматы');
+L.marker([43.0, 78.5]).addTo(map).bindPopup('Көлтаз');
+L.marker([51.2, 71.4]).addTo(map).bindPopup('Астана');
+L.marker([43.5, 69.8]).addTo(map).bindPopup('Қаратау');
+L.marker([45.6, 63.3]).addTo(map).bindPopup('Байқоңыр');
 
-    } catch (e) {}
