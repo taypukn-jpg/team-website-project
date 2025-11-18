@@ -8,6 +8,42 @@ body {
     color: #222;
 }
 
+/* НЕОН ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ */
+#lang-switcher {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 25px 0;
+}
+
+.lang-btn {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    color: #fff;
+    background: rgba(20, 20, 35, 0.7);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 12px #7b2cff77, inset 0 0 10px #7b2cff55;
+    transition: 0.25s;
+    letter-spacing: 1px;
+}
+
+/* Ховер — неоновое свечение */
+.lang-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 0 18px #9d4cff, 0 0 25px #7b2cff;
+}
+
+/* Активная кнопка */
+.lang-btn.active {
+    background: #9d4cff;
+    box-shadow: 0 0 20px #bf7aff, 0 0 35px #7b2cff;
+}
+
+
 /* Шапка */
 header {
     background: linear-gradient(90deg, #009688, #26a69a);
@@ -162,6 +198,9 @@ h2 { font-size: 1.6rem; margin: 20px 0; font-weight: 600; }
 }
 
 #favorites li:last-child { border-bottom: none; }
+
+
+
 
 /* Карта */
 #map {

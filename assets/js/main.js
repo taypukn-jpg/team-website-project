@@ -250,14 +250,21 @@ const sliderTitle = document.querySelector("#slider h2");
 const placeContainer = document.getElementById("places");
 
 // ====== Функция: тілге сай мәтіндер ======
-function changeLanguage(lang) {
-  const data = translations[lang];
-  if (!data) return;
+const langButtons = document.querySelectorAll(".lang-btn");
 
-  siteTitle.textContent = data.siteTitle;
-  filterTitle.textContent = data.filter;
-  favoritesTitle.textContent = data.favorites;
-  sliderTitle.textContent = data.slider;
+langButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const lang = btn.dataset.lang;
+
+        // убрать предыдущий активный
+        langButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        // сменить язык (вставь свою функцию)
+        changeLanguage(lang);
+    });
+});
+
 
   // Галереяны тазалап, жаңа мәліметтерді қосу
   placeContainer.innerHTML = "";
