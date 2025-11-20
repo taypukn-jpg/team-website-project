@@ -5,19 +5,9 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #e3f6ff, #ffffff 40%, #e3ffe9);
-    color: #222;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    /* Светлый премиум фон */
     background: linear-gradient(135deg, #f5fafd 0%, #ffffff 60%, #f0fff4 100%);
     color: #222;
 }
-
 
 /* =========================
    ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ
@@ -44,15 +34,8 @@ body {
     letter-spacing: 1px;
 }
 
-.lang-btn:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 0 18px #9d4cff, 0 0 25px #7b2cff;
-}
-
-.lang-btn.active {
-    background: #9d4cff;
-    box-shadow: 0 0 20px #bf7aff, 0 0 35px #7b2cff;
-}
+.lang-btn:hover { transform: translateY(-4px) scale(1.05); }
+.lang-btn.active { background: #9d4cff; box-shadow: 0 0 20px #bf7aff, 0 0 35px #7b2cff; }
 
 /* =========================
    ШАПКА
@@ -66,18 +49,12 @@ header {
     border-bottom: 3px solid #00796b;
 }
 
-h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.15);
-}
+h1 { font-size: 2.5rem; font-weight: 700; text-shadow: 0 2px 5px rgba(0,0,0,0.15); }
+h2 { font-size: 1.6rem; margin: 20px 0; font-weight: 600; }
 
-h2 {
-    font-size: 1.6rem;
-    margin: 20px 0;
-    font-weight: 600;
-}
-
+/* =========================
+   СПИСОК ГОРОДОВ
+========================= */
 .city-container {
     max-width: 400px;
     margin: 20px auto;
@@ -87,13 +64,7 @@ h2 {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-#city-search {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
+#city-search { width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; }
 
 #city-list {
     list-style: none;
@@ -109,24 +80,13 @@ h2 {
     transition: 0.2s;
 }
 
-#city-list li:hover {
-    background-color: #e0e0e0;
-}
-
-#city-list li.active {
-    background-color: #4caf50;
-    color: #fff;
-}
-
+#city-list li:hover { background-color: #e0e0e0; }
+#city-list li.active { background-color: #4caf50; color: #fff; }
 
 /* =========================
    ФИЛЬТР
 ========================= */
-#filter {
-    text-align: center;
-    padding: 20px;
-}
-
+#filter { text-align: center; padding: 20px; }
 #filter button {
     margin: 6px;
     padding: 12px 26px;
@@ -141,28 +101,20 @@ h2 {
     transition: 0.25s;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
-
-#filter button:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-}
+#filter button:hover { transform: translateY(-3px) scale(1.05); }
 
 /* =========================
    ГАЛЕРЕЯ
 ========================= */
-#gallery {
-    padding: 20px 30px 50px;
-}
-
+#gallery { padding: 20px 30px 50px; }
 .places {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 28px;
     justify-content: center;
 }
-
 .place {
-    background: #ffffff;
+    background: #fff;
     border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
@@ -170,141 +122,36 @@ h2 {
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     border: 2px solid #e0f2f1;
 }
-
-.place img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    transition: 0.3s;
-}
-
-.place p {
-    padding: 14px;
-    text-align: center;
-    font-size: 1rem;
-    color: #333;
-    font-weight: 500;
-}
-
-.place:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    border-color: #009688;
-}
-
-.place:hover img {
-    transform: scale(1.05);
-}
+.place img { width: 100%; height: 180px; object-fit: cover; transition: 0.3s; }
+.place p { padding: 14px; text-align: center; font-size: 1rem; color: #333; font-weight: 500; }
+.place:hover { transform: translateY(-6px); box-shadow: 0 10px 25px rgba(0,0,0,0.25); border-color: #009688; }
+.place:hover img { transform: scale(1.05); }
 
 /* =========================
    СЛАЙДЕР
 ========================= */
-#slider {
-    text-align: center;
-    padding: 35px 20px;
-    background: #ffffff;
-    border-radius: 25px;
-    margin: 25px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    border: 2px solid #e0f7fa;
-    position: relative;
-}
-
+#slider { text-align: center; padding: 35px 20px; background: #fff; border-radius: 25px; margin: 25px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); border: 2px solid #e0f7fa; position: relative; }
 .slide-container { position: relative; display: inline-block; }
-
-#slide-image {
-    width: 600px;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-    border: 3px solid #80deea;
-    transition: 0.5s;
-}
-
-#slide-caption {
-    margin-top: 18px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #00695c;
-}
-
-#prev, #next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #009688;
-    color: white;
-    border: none;
-    padding: 14px 16px;
-    cursor: pointer;
-    font-size: 22px;
-    border-radius: 50%;
-    transition: 0.25s;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-#prev:hover, #next:hover {
-    background: #26a69a;
-    transform: translateY(-50%) scale(1.1);
-}
-
-#prev { left: -70px; }
-#next { right: -70px; }
+#slide-image { width: 600px; height: 350px; object-fit: cover; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.25); border: 3px solid #80deea; transition: 0.5s; }
+#slide-caption { margin-top: 18px; font-size: 1.2rem; font-weight: 600; color: #00695c; }
+#prev, #next { position: absolute; top: 50%; transform: translateY(-50%); background: #009688; color: white; border: none; padding: 14px 16px; cursor: pointer; font-size: 22px; border-radius: 50%; transition: 0.25s; }
+#prev:hover, #next:hover { background: #26a69a; transform: translateY(-50%) scale(1.1); }
+#prev { left: -70px; } #next { right: -70px; }
 
 /* =========================
    СУЙІКТІ ОРЫНДАР
 ========================= */
-#favorites {
-    padding: 25px;
-    background: #ffffff;
-    border-radius: 20px;
-    margin: 30px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    border: 2px solid #b2dfdb;
-}
-
+#favorites { padding: 25px; background: #fff; border-radius: 20px; margin: 30px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); border: 2px solid #b2dfdb; }
 #favorites ul { list-style: none; padding: 0; }
-
-#favorites li {
-    padding: 10px 2px;
-    font-size: 1.1rem;
-    color: #004d40;
-    border-bottom: 1px solid #e0f2f1;
-    font-weight: 500;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
+#favorites li { padding: 10px 2px; font-size: 1.1rem; color: #004d40; border-bottom: 1px solid #e0f2f1; font-weight: 500; display: flex; justify-content: space-between; align-items: center; }
 #favorites li:last-child { border-bottom: none; }
-
-.fav-remove {
-    background: #ff5252;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 22px;
-    height: 22px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.25s;
-}
-
-.fav-remove:hover {
-    transform: scale(1.2);
-    background: #ff1744;
-}
+.fav-remove { background: #ff5252; color: white; border: none; border-radius: 50%; width: 22px; height: 22px; cursor: pointer; font-weight: bold; transition: 0.25s; }
+.fav-remove:hover { transform: scale(1.2); background: #ff1744; }
 
 /* =========================
    КАРТА
 ========================= */
-#map {
-    margin: 30px;
-    border-radius: 20px;
-    overflow: hidden;
-    border: 3px solid #80cbc4;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-}
+#map { margin: 30px; border-radius: 20px; overflow: hidden; border: 3px solid #80cbc4; box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+
 
 
