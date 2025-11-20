@@ -129,7 +129,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ======= Автоплей слайдера =======
     let autoPlay=true, autoId=null;
-    function
+    function startAuto(){ if(!autoPlay||slides.length<=1)return; autoId=setInterval(()=>showSlide(slideIndex+1),5000); }
+    function stopAuto(){ if(autoId)clearInterval(autoId); }
+    startAuto();
+    const slideContainer=document.querySelector('.slide-container');
+    slideContainer.addEventListener('mouseenter', stopAuto);
+    slideContainer.addEventListener('mouseleave', startAuto);
+});
+
 
 
 
