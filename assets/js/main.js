@@ -220,3 +220,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+// ====== АВТОРЛАР МӘТІНДЕРІ 3 ТІЛДЕ ======
+const authorsText = {
+    kk: {
+        rights: "Барлық құқықтар қорғалған © 2025",
+        authorsTitle: "Авторлар",
+        a1name: "Таупық Нұрислам",
+        a1text: "Репозиторий жасап, логикаға жауап берді.",
+        a2name: "Торыбай Нұрислам",
+        a2text: "Дизайн мен сайтқа жауап берді."
+    },
+    ru: {
+        rights: "Все права защищены © 2025",
+        authorsTitle: "Авторы",
+        a1name: "Тауфик Нурислам",
+        a1text: "Создал репозиторий и отвечал за логику.",
+        a2name: "Торыбай Нурислам",
+        a2text: "Отвечал за дизайн и сайт."
+    },
+    en: {
+        rights: "All rights reserved © 2025",
+        authorsTitle: "Authors",
+        a1name: "Taufiq Nurislam",
+        a1text: "Created repository and was responsible for logic.",
+        a2name: "Toribay Nurislam",
+        a2text: "Responsible for design and the website."
+    }
+};
+
+
+// ====== ТІЛ АУЫСҚАНДА АВТОРЛАР БӨЛІМІН ЖАҢАРТУ ======
+function updateAuthors(lang) {
+    const t = authorsText[lang];
+
+    document.getElementById("footer-rights").textContent = t.rights;
+    document.getElementById("authors-title").textContent = t.authorsTitle;
+    document.getElementById("author1-name").textContent = t.a1name;
+    document.getElementById("author1-text").textContent = t.a1text;
+    document.getElementById("author2-name").textContent = t.a2name;
+    document.getElementById("author2-text").textContent = t.a2text;
+}
+
+
+// ====== ТІЛ АУЫСТЫРУ ФУНКЦИЯСЫНА ҚОС ======
+const oldSetLanguage = setLanguage;
+setLanguage = function(lang) {
+    oldSetLanguage(lang);   // бәрі жұмыс істейді
+    updateAuthors(lang);    // авторлар да жаңарады
+};
+
+
+// ====== МОДАЛКА ======
+const modal = document.getElementById("authors-modal");
+const openBtn = document.getElementById("about-authors-btn");
+const closeBtn = document.getElementById("modal-close");
+
+openBtn.onclick = () => modal.style.display = "block";
+closeBtn.onclick = () => modal.style.display = "none";
+
+window.onclick = (e) => {
+    if (e.target === modal) modal.style.display = "none";
+};
