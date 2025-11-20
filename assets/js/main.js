@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
     // ---------- ГАЛЕРЕЯ МӘТІНДЕРІ (3 ТІЛ) ----------
     const galleryText = {
@@ -186,29 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // ---------- ФУТЕР ЖӘНЕ АВТОРЛАР ТІЛДЕРІ ----------
-const footerText = {
-    kk: {
-        rights: "Барлық құқықтар қорғалған.",
-        about: "Авторлар",
-        a1: "Таупық Нұрислам: репозиторий жасады және логикаға жауапты болды.",
-        a2: "Торыбай Нұрислам: дизайн және сайтқа жауапты болды."
-    },
-    ru: {
-        rights: "Все права защищены.",
-        about: "Авторы",
-        a1: "Таупық Нурислам: создал репозиторий и отвечал за логику.",
-        a2: "Торыбай Нурислам: отвечал за дизайн и сайт."
-    },
-    en: {
-        rights: "All rights reserved.",
-        about: "Authors",
-        a1: "Tawpyk Nurislam: created the repository and worked on logic.",
-        a2: "Torybay Nurislam: responsible for design and website."
-    }
-};
-
-
     function updateGallery(lang) {
         document.querySelectorAll(".place").forEach(place => {
             const name = place.dataset.name;
@@ -216,14 +194,6 @@ const footerText = {
             p.textContent = galleryText[lang][name];
         });
     }
-    // ----- ФУТЕР -----
-document.getElementById("rights-text").textContent = footerText[lang].rights;
-document.getElementById("about-btn").textContent = footerText[lang].about;
-
-// ----- МОДАЛ -----
-document.getElementById("about-title").textContent = footerText[lang].about;
-document.getElementById("author1").textContent = footerText[lang].a1;
-document.getElementById("author2").textContent = footerText[lang].a2;
 
     function setLanguage(lang) {
         currentLang = lang;
@@ -250,20 +220,4 @@ document.getElementById("author2").textContent = footerText[lang].a2;
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
     });
 
-});
-// ===== МОАДАЛ ОКНО =====
-const aboutBtn = document.getElementById("about-btn");
-const modal = document.getElementById("about-modal");
-const modalClose = document.getElementById("modal-close");
-
-aboutBtn.addEventListener("click", () => {
-    modal.style.display = "block";
-});
-
-modalClose.addEventListener("click", () => {
-    modal.style.display = "none";
-});
-
-window.addEventListener("click", (e) => {
-    if (e.target === modal) modal.style.display = "none";
 });
