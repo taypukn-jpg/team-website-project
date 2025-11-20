@@ -205,18 +205,67 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================== ИНИЦИАЛИЗАЦИЯ ====================
     setLanguage(currentLang);
 });
-// ==================== ПЕРЕКЛЮЧАТЕЛЬ ТЕМ ====================
+// ==================== ТЕМЫ ====================
+const themes = {
+    dark: {
+        '--bg-color': '#121212',
+        '--text-color': '#eee',
+        '--header-bg': '#1f1f1f',
+        '--header-text': '#fff',
+        '--btn-bg': '#333',
+        '--btn-active': '#bb86fc'
+    },
+    light: {
+        '--bg-color': '#e3f6ff',
+        '--text-color': '#222',
+        '--header-bg': 'linear-gradient(90deg, #009688, #26a69a)',
+        '--header-text': '#fff',
+        '--btn-bg': 'rgba(20,20,35,0.7)',
+        '--btn-active': '#9d4cff'
+    },
+    ocean: {
+        '--bg-color': '#d0f0fd',
+        '--text-color': '#03396c',
+        '--header-bg': '#0077b6',
+        '--header-text': '#fff',
+        '--btn-bg': '#00b4d8',
+        '--btn-active': '#023e8a'
+    },
+    sunset: {
+        '--bg-color': '#fff0e6',
+        '--text-color': '#5c1a00',
+        '--header-bg': '#ff7f50',
+        '--header-text': '#fff',
+        '--btn-bg': '#ffb347',
+        '--btn-active': '#ff4500'
+    }
+};
+
+// ==================== ФУНКЦИЯ ПЕРЕКЛЮЧЕНИЯ ТЕМЫ ====================
+function setTheme(themeName) {
+    const theme = themes[themeName];
+    if (!theme) return; // если темы нет, выходим
+    for (let key in theme) {
+        document.documentElement.style.setProperty(key, theme[key]);
+    }
+}
+
+// ==================== ПЕРЕКЛЮЧАТЕЛЬ КНОПОК ====================
 const themeButtons = document.querySelectorAll('.theme-btn');
 
 themeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         const themeName = btn.dataset.theme;
         setTheme(themeName);
-        themeButtons.forEach(b => b.classList.toggle('active', b === btn));
+
+        // Подсветка активной кнопки
+        themeButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
     });
 });
 
-// По умолчанию активная тема
+// Устанавливаем тему по умолчанию
 document.querySelector('.theme-btn[data-theme="dark"]').classList.add('active');
+setTheme('dark');
 
 
