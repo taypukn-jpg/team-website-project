@@ -362,14 +362,17 @@ footer {
     --header-text: #fff;
     --btn-bg: rgba(20,20,35,0.7);
     --btn-active: #9d4cff;
+
+    --slider-bg: #ffffff;       /* фон слайдера */
+    --slider-text: #00695c;     /* текст слайдера */
+    --favorites-bg: #ffffff;    /* фон избранного */
+    --favorites-text: #004d40;  /* текст избранного */
 }
+
 
 body {
     background: var(--bg-color);
     color: var(--text-color);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
 }
 
 header {
@@ -377,7 +380,6 @@ header {
     color: var(--header-text);
 }
 
-/* Кнопки языков и темы */
 .lang-btn, .theme-btn {
     background: var(--btn-bg);
     color: var(--header-text);
@@ -387,4 +389,19 @@ header {
     background: var(--btn-active);
 }
 
+#slider {
+    background: var(--slider-bg);
+}
+
+#slide-caption {
+    color: var(--slider-text);
+}
+
+#favorites {
+    background: var(--favorites-bg);
+}
+
+#favorites li {
+    color: var(--favorites-text);
+}
 

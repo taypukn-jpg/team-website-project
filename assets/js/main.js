@@ -205,6 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================== ИНИЦИАЛИЗАЦИЯ ====================
     setLanguage(currentLang);
 });
+// ==================== ТЕМЫ ====================
 const themes = {
     dark: {
         '--bg-color': '#121212',
@@ -212,7 +213,11 @@ const themes = {
         '--header-bg': '#1f1f1f',
         '--header-text': '#fff',
         '--btn-bg': '#333',
-        '--btn-active': '#bb86fc'
+        '--btn-active': '#bb86fc',
+        '--slider-bg': '#1e1e1e',
+        '--slider-text': '#bb86fc',
+        '--favorites-bg': '#1e1e1e',
+        '--favorites-text': '#bb86fc'
     },
     light: {
         '--bg-color': '#e3f6ff',
@@ -220,7 +225,11 @@ const themes = {
         '--header-bg': 'linear-gradient(90deg, #009688, #26a69a)',
         '--header-text': '#fff',
         '--btn-bg': 'rgba(20,20,35,0.7)',
-        '--btn-active': '#9d4cff'
+        '--btn-active': '#9d4cff',
+        '--slider-bg': '#ffffff',
+        '--slider-text': '#00695c',
+        '--favorites-bg': '#ffffff',
+        '--favorites-text': '#004d40'
     },
     ocean: {
         '--bg-color': '#d0f0fd',
@@ -228,7 +237,11 @@ const themes = {
         '--header-bg': '#0077b6',
         '--header-text': '#fff',
         '--btn-bg': '#00b4d8',
-        '--btn-active': '#023e8a'
+        '--btn-active': '#023e8a',
+        '--slider-bg': '#caf0f8',
+        '--slider-text': '#0077b6',
+        '--favorites-bg': '#ade8f4',
+        '--favorites-text': '#023e8a'
     },
     sunset: {
         '--bg-color': '#fff0e6',
@@ -236,7 +249,11 @@ const themes = {
         '--header-bg': '#ff7f50',
         '--header-text': '#fff',
         '--btn-bg': '#ffb347',
-        '--btn-active': '#ff4500'
+        '--btn-active': '#ff4500',
+        '--slider-bg': '#ffe6d9',
+        '--slider-text': '#b34700',
+        '--favorites-bg': '#ffd9b3',
+        '--favorites-text': '#b34700'
     }
 };
 
@@ -254,6 +271,8 @@ themeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         const themeName = btn.dataset.theme;
         setTheme(themeName);
+
+        // Подсветка активной кнопки
         themeButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
     });
@@ -262,6 +281,7 @@ themeButtons.forEach(btn => {
 // Тема по умолчанию
 document.querySelector('.theme-btn[data-theme="dark"]').classList.add('active');
 setTheme('dark');
+
 
 
 
