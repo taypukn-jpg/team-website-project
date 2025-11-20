@@ -9,6 +9,16 @@ body {
     color: #222;
 }
 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Светлый премиум фон */
+    background: linear-gradient(135deg, #f5fafd 0%, #ffffff 60%, #f0fff4 100%);
+    color: #222;
+}
+
+
 /* =========================
    ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ
 ========================= */
