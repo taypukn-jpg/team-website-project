@@ -118,6 +118,85 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+     // Обновление избранного UI
+    function updateFavorites() {
+        favList.innerHTML = '';
+        favorites.forEach(name => {
+            const li = document.createElement('li');
+            li.textContent = name;
+            li.dataset.name = name;
+            // можно добавить кнопку удалить
+            const btn = document.createElement('button');
+            btn.textContent = '×';
+            btn.className = 'fav-remove';
+            btn.title = 'Удалить из избранного';
+            li.appendChild(btn);
+            favList.appendChild(li);
+        });
+    }
+
+    updateFavorites();
+
+    // Добавление в избранное по клику на карточку (делегирование)
+    places.forEach(place => {
+        place.addEventListener('click', (e) => {
+            const name = place.dataset.name;
+            if (!name) return;
+            if (!favorites.includes(name)) {
+                favorites.push(name);
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+                updateFavorites();
+            }
+        });
+    });
+
+    // Удаление из избранного (делегирование на ul)
+    favList.addEventListener('click', (e) => {
+        if (e.target.classList.contains('fav-remove')) {
+            const li = e.target.closest('li');
+            const name = li && li.dataset.name;
+            if (!name) return;
+            favorites = favorites.filter(n => n !== name);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            updateFavorites();
+        }
+    });
+
+    // Фильтр
+    const filterButtons = document.querySelectorAll('#filter button');
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const type = btn.dataset.type;
+            places.forEach(place => {
+                const placeType = place.dataset.type;
+                if (type === 'all' || type === placeType) {
+                    place.style.display = 'block';
+                } else {
+                    place.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Leaflet карта
+    const map = L.map('mapid').setView([48.0, 66.9], 5);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+    const markers = [
+        { coords: [49.5, 86.0], name: 'Алтай таулары' },
+        { coords: [53.0, 71.5], name: 'Бурабай' },
+        { coords: [43.2, 79.1], name: 'Шарын шатқалы' },
+        { coords: [45.5, 79.2], name: 'Көлсай көлдері' },
+        { coords: [43.2, 76.9], name: 'Алматы' },
+        { coords: [43.0, 78.5], name: 'Көлтаз' },
+        { coords: [51.2, 71.4], name: 'Астана' },
+        { coords: [43.5, 69.8], name: 'Қаратау' },
+        { coords: [45.6, 63.3], name: 'Байқоңыр' }
+    ];
+
+    markers.forEach(m => L.marker(m.coords).addTo(map).bindPopup(m.name));
+
+
     // LANGUAGE SWITCH
     function setLanguage(lang) {
         currentLang = lang;
