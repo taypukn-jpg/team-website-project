@@ -222,7 +222,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ====== АВТОРЛАР МӘТІНДЕРІ 3 ТІЛДЕ ======
+    document.addEventListener('DOMContentLoaded', () => {
+
+    // ---------- АВТОРЛАР МӘТІНДЕРІ ----------
     const authorsText = {
         kk: {
             rights: "Барлық құқықтар қорғалған © 2025",
@@ -250,37 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    function setLanguage(lang) {
-    currentLang = lang;
-
-    const t = headings[lang];
-
-    // Сайттың негізгі блоктарын жаңарту
-    document.getElementById('site-title').textContent = t.site;
-    document.getElementById('gallery-title').textContent = t.gallery;
-    document.getElementById('filter-title').textContent = t.filter;
-    document.getElementById('slider-title').textContent = t.slider;
-    document.getElementById('fav-title').textContent = t.fav;
-    document.getElementById('map-title').textContent = t.map;
-
-    updateGallery(lang);
-    showSlide(slideIndex);
-
-    // Авторлар блоктарын жаңарту
-    const aText = authorsText[lang];
-    document.getElementById("footer-rights").textContent = aText.rights;
-    document.getElementById("authors-title").textContent = aText.authorsTitle;
-    document.getElementById("author1-name").textContent = aText.a1name;
-    document.getElementById("author1-text").textContent = aText.a1text;
-    document.getElementById("author2-name").textContent = aText.a2name;
-    document.getElementById("author2-text").textContent = aText.a2text;
-
-    // Активті батырманы көрсету
-    langButtons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-}
-
-
-    // ====== МОДАЛКА ======
+    // ---------- МОДАЛКА ----------
     const modal = document.getElementById("authors-modal");
     const openBtn = document.getElementById("about-authors-btn");
     const closeBtn = document.getElementById("modal-close");
@@ -289,14 +261,43 @@ document.addEventListener('DOMContentLoaded', () => {
     closeBtn.addEventListener("click", () => modal.style.display = "none");
     window.addEventListener("click", (e) => { if(e.target === modal) modal.style.display = "none"; });
 
-    // ====== ТІЛ АУЫСТЫРУ ======
+    // ---------- ТІЛ АУЫСТЫРУ (БАРЛЫҒЫ) ----------
     const langButtons = document.querySelectorAll('.lang-btn');
-    const oldSetLanguage = window.setLanguage; // егер бұрыннан бар функция болса
-    window.setLanguage = function(lang){
-        oldSetLanguage(lang);
-        updateAuthors(lang); // авторлар бөлімін жаңарту
+
+    function setLanguage(lang) {
+        currentLang = lang;
+
+        // --------- Блоктар мәтіндері ---------
+        const t = headings[lang];
+        document.getElementById('site-title').textContent = t.site;
+        document.getElementById('gallery-title').textContent = t.gallery;
+        document.getElementById('filter-title').textContent = t.filter;
+        document.getElementById('slider-title').textContent = t.slider;
+        document.getElementById('fav-title').textContent = t.fav;
+        document.getElementById('map-title').textContent = t.map;
+
+        updateGallery(lang);
+        showSlide(slideIndex);
+
+        // --------- Авторлар блогы ---------
+        const aText = authorsText[lang];
+        document.getElementById("footer-rights").textContent = aText.rights;
+        document.getElementById("authors-title").textContent = aText.authorsTitle;
+        document.getElementById("author1-name").textContent = aText.a1name;
+        document.getElementById("author1-text").textContent = aText.a1text;
+        document.getElementById("author2-name").textContent = aText.a2name;
+        document.getElementById("author2-text").textContent = aText.a2text;
+
+        // --------- Актив батырма ---------
+        langButtons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
     }
 
-    // бірінші жүктелгенде авторларды көрсету
-    updateAuthors("kk");
+    // ---------- Слушатель батырмалары ----------
+    langButtons.forEach(btn => {
+        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    });
+
+    // ---------- Бастапқы тіл ----------
+    setLanguage("kk");
+
 });
