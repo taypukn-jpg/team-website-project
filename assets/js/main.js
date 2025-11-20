@@ -205,7 +205,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================== ИНИЦИАЛИЗАЦИЯ ====================
     setLanguage(currentLang);
 });
-// ==================== ТЕМЫ ====================
 const themes = {
     dark: {
         '--bg-color': '#121212',
@@ -241,31 +240,28 @@ const themes = {
     }
 };
 
-// ==================== ФУНКЦИЯ ПЕРЕКЛЮЧЕНИЯ ТЕМЫ ====================
 function setTheme(themeName) {
     const theme = themes[themeName];
-    if (!theme) return; // если темы нет, выходим
+    if (!theme) return;
     for (let key in theme) {
         document.documentElement.style.setProperty(key, theme[key]);
     }
 }
 
-// ==================== ПЕРЕКЛЮЧАТЕЛЬ КНОПОК ====================
 const themeButtons = document.querySelectorAll('.theme-btn');
 
 themeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         const themeName = btn.dataset.theme;
         setTheme(themeName);
-
-        // Подсветка активной кнопки
         themeButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
     });
 });
 
-// Устанавливаем тему по умолчанию
+// Тема по умолчанию
 document.querySelector('.theme-btn[data-theme="dark"]').classList.add('active');
 setTheme('dark');
+
 
 

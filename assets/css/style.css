@@ -355,5 +355,36 @@ footer {
     box-shadow: 0 0 20px #bf7aff;
 }
 
+:root {
+    --bg-color: #e3f6ff;
+    --text-color: #222;
+    --header-bg: linear-gradient(90deg, #009688, #26a69a);
+    --header-text: #fff;
+    --btn-bg: rgba(20,20,35,0.7);
+    --btn-active: #9d4cff;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: var(--header-bg);
+    color: var(--header-text);
+}
+
+/* Кнопки языков и темы */
+.lang-btn, .theme-btn {
+    background: var(--btn-bg);
+    color: var(--header-text);
+}
+
+.lang-btn.active, .theme-btn.active {
+    background: var(--btn-active);
+}
 
 
