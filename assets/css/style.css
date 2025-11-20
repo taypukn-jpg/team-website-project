@@ -78,6 +78,47 @@ h2 {
     font-weight: 600;
 }
 
+.city-container {
+    max-width: 400px;
+    margin: 20px auto;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#city-search {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#city-list {
+    list-style: none;
+    padding: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#city-list li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#city-list li:hover {
+    background-color: #e0e0e0;
+}
+
+#city-list li.active {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+
 /* =========================
    ФИЛЬТР
 ========================= */

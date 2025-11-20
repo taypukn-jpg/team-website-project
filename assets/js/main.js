@@ -85,6 +85,42 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const cities = [
+        "Астана", "Алматы", "Актобе", "Атырау", "Шымкент", 
+        "Караганда", "Костанай", "Кызылорда", "Павлодар",
+        "Семей", "Тараз", "Туркестан", "Усть-Каменогорск", "Петропавловск",
+        "Актау", "Жезказган", "Кокшетау", "Экибастуз", "Темиртау", "Рудный"
+    ];
+
+    const cityList = document.getElementById('city-list');
+    const citySearch = document.getElementById('city-search');
+
+    function renderCities(filter = '') {
+        cityList.innerHTML = '';
+        cities
+            .filter(city => city.toLowerCase().includes(filter.toLowerCase()))
+            .forEach(city => {
+                const li = document.createElement('li');
+                li.textContent = city;
+                li.addEventListener('click', () => {
+                    document.querySelectorAll('#city-list li').forEach(c => c.classList.remove('active'));
+                    li.classList.add('active');
+                });
+                cityList.appendChild(li);
+            });
+    }
+
+    renderCities();
+
+    citySearch.addEventListener('input', (e) => {
+        renderCities(e.target.value);
+    });
+});
+
+
     // Фильтр
     const filterButtons = document.querySelectorAll('#filter button');
     filterButtons.forEach(btn => {
