@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ru: {
             rights: "Все права защищены © 2025",
             authorsTitle: "Авторы",
-            a1name: "Тауфик Нурислам",
+            a1name: "Таупык Нурислам",
             a1text: "Создал репозиторий и отвечал за логику.",
             a2name: "Торыбай Нурислам",
             a2text: "Отвечал за дизайн и сайт."
@@ -243,23 +243,42 @@ document.addEventListener('DOMContentLoaded', () => {
         en: {
             rights: "All rights reserved © 2025",
             authorsTitle: "Authors",
-            a1name: "Taufiq Nurislam",
+            a1name: "Taupyk Nurislam",
             a1text: "Created repository and was responsible for logic.",
             a2name: "Toribay Nurislam",
             a2text: "Responsible for design and the website."
         }
     };
 
-    // ====== ТІЛ АУЫСТЫРУДА АВТОРЛАРДЫ ЖАҢАРТУ ======
-    function updateAuthors(lang) {
-        const t = authorsText[lang];
-        document.getElementById("footer-rights").textContent = t.rights;
-        document.getElementById("authors-title").textContent = t.authorsTitle;
-        document.getElementById("author1-name").textContent = t.a1name;
-        document.getElementById("author1-text").textContent = t.a1text;
-        document.getElementById("author2-name").textContent = t.a2name;
-        document.getElementById("author2-text").textContent = t.a2text;
-    }
+    function setLanguage(lang) {
+    currentLang = lang;
+
+    const t = headings[lang];
+
+    // Сайттың негізгі блоктарын жаңарту
+    document.getElementById('site-title').textContent = t.site;
+    document.getElementById('gallery-title').textContent = t.gallery;
+    document.getElementById('filter-title').textContent = t.filter;
+    document.getElementById('slider-title').textContent = t.slider;
+    document.getElementById('fav-title').textContent = t.fav;
+    document.getElementById('map-title').textContent = t.map;
+
+    updateGallery(lang);
+    showSlide(slideIndex);
+
+    // Авторлар блоктарын жаңарту
+    const aText = authorsText[lang];
+    document.getElementById("footer-rights").textContent = aText.rights;
+    document.getElementById("authors-title").textContent = aText.authorsTitle;
+    document.getElementById("author1-name").textContent = aText.a1name;
+    document.getElementById("author1-text").textContent = aText.a1text;
+    document.getElementById("author2-name").textContent = aText.a2name;
+    document.getElementById("author2-text").textContent = aText.a2text;
+
+    // Активті батырманы көрсету
+    langButtons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+}
+
 
     // ====== МОДАЛКА ======
     const modal = document.getElementById("authors-modal");
