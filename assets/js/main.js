@@ -1,12 +1,16 @@
-// Галерея және сүйікті орындар
+// ===============================
+// Сүйікті орындар
+// ===============================
+
+// Галереядағы элементтер
 const places = document.querySelectorAll('.place');
 const favList = document.getElementById('fav-list');
 
-// LocalStorage-тен сүйікті орындарды жүктеу
+// LocalStorage-тен деректерді алу
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 updateFavorites();
 
-// Галереядағы орындарды басқанда сүйікті тізімге қосу
+// Галерея элементін басқанда – фаворитке қосу
 places.forEach(place => {
     place.addEventListener('click', () => {
         const name = place.dataset.name;
@@ -19,10 +23,9 @@ places.forEach(place => {
     });
 });
 
-// Сүйікті тізімді жаңарту
+// Фаворит тізімін жаңарту
 function updateFavorites() {
     favList.innerHTML = '';
-
     favorites.forEach(name => {
         const li = document.createElement('li');
         li.textContent = name;
@@ -30,7 +33,12 @@ function updateFavorites() {
     });
 }
 
-// Слайдер үшін суреттер мен сипаттамалар
+
+
+// ===============================
+// Слайдер
+// ===============================
+
 const slides = [
     {
         src: "https://avatars.mds.yandex.net/i?id=447256547577cf1aa1dbe8bfffeb4d43c784662f-4306866-images-thumbs&n=13",
@@ -47,18 +55,22 @@ const slides = [
 ];
 
 let slideIndex = 0;
+
 const slideImage = document.getElementById('slide-image');
 const slideCaption = document.getElementById('slide-caption');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 
-// Слайдерді көрсету функциясы
+// Слайд көрсету функциясы
 function showSlide(index) {
     slideImage.src = slides[index].src;
     slideCaption.textContent = slides[index].caption;
 }
 
-// Стрелкаларға басу оқиғалары
+// Бастапқы слайд
+showSlide(slideIndex);
+
+// Алдыңғы/келесі батырмалары
 prevBtn.addEventListener('click', () => {
     slideIndex = (slideIndex - 1 + slides.length) % slides.length;
     showSlide(slideIndex);
@@ -69,10 +81,12 @@ nextBtn.addEventListener('click', () => {
     showSlide(slideIndex);
 });
 
-// Бастапқы көрсетілім
-showSlide(slideIndex);
 
+
+// ===============================
 // Фильтр
+// ===============================
+
 const filterButtons = document.querySelectorAll('#filter button');
 
 filterButtons.forEach(btn => {
@@ -84,6 +98,7 @@ filterButtons.forEach(btn => {
 
             if (type === 'all' || type === placeType) {
                 place.style.display = 'block';
+                place.style.opacity = '1';
             } else {
                 place.style.display = 'none';
             }
@@ -91,8 +106,13 @@ filterButtons.forEach(btn => {
     });
 });
 
-// Карта
-const map = L.map('mapid').setView([48.0, 66.9], 5); // Қазақстан ортасы
+
+
+// ===============================
+// Карта (Leaflet)
+// ===============================
+
+const map = L.map('mapid').setView([48.0, 66.9], 5);  // Қазақстан ортасы
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
     .addTo(map);
@@ -103,8 +123,54 @@ L.marker([53.0, 71.5]).addTo(map).bindPopup('Бурабай');
 L.marker([43.2, 79.1]).addTo(map).bindPopup('Шарын шатқалы');
 L.marker([45.5, 79.2]).addTo(map).bindPopup('Көлсай көлдері');
 L.marker([43.2, 76.9]).addTo(map).bindPopup('Алматы');
-L.marker([43.0, 78.5]).addTo(map).bindPopup('Көлтаз');
 L.marker([51.2, 71.4]).addTo(map).bindPopup('Астана');
 L.marker([43.5, 69.8]).addTo(map).bindPopup('Қаратау');
 L.marker([45.6, 63.3]).addTo(map).bindPopup('Байқоңыр');
+
+
+
+// ===============================
+// Тіл ауыстыру (KK / RU / EN)
+// ===============================
+
+const titles = {
+    kk: {
+        site: "Қазақстандағы Танымал Туристік Орындар",
+        gallery: "Галерея",
+        filter: "Фильтр",
+        slider: "Танымал орындар",
+        fav: "Сүйікті орындар",
+        map: "Қазақстан картасы"
+    },
+    ru: {
+        site: "Популярные туристические места Казахстана",
+        gallery: "Галерея",
+        filter: "Фильтр",
+        slider: "Популярные места",
+        fav: "Избранные места",
+        map: "Карта Казахстана"
+    },
+    en: {
+        site: "Popular Tourist Places in Kazakhstan",
+        gallery: "Gallery",
+        filter: "Filter",
+        slider: "Popular Places",
+        fav: "Favorite Places",
+        map: "Map of Kazakhstan"
+    }
+};
+
+const langSelect = document.getElementById('language-select');
+
+langSelect.addEventListener('change', () => {
+    const lang = langSelect.value;
+
+    document.getElementById('site-title').textContent = titles[lang].site;
+    document.querySelector('#gallery h2').textContent = titles[lang].gallery;
+    document.querySelector('#filter h2').textContent = titles[lang].filter;
+    document.querySelector('#slider h2').textContent = titles[lang].slider;
+    document.querySelector('#favorites h2').textContent = titles[lang].fav;
+    document.querySelector('#map h2').textContent = titles[lang].map;
+});
+
 
