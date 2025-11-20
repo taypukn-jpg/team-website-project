@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-document.addEventListener('DOMContentLoaded', () => {
 
     // ---------- ГАЛЕРЕЯ МӘТІНДЕРІ (3 ТІЛ) ----------
     const galleryText = {
