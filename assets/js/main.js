@@ -205,3 +205,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================== ИНИЦИАЛИЗАЦИЯ ====================
     setLanguage(currentLang);
 });
+// ==================== ПЕРЕКЛЮЧАТЕЛЬ ТЕМ ====================
+const themeButtons = document.querySelectorAll('.theme-btn');
+
+themeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const themeName = btn.dataset.theme;
+        setTheme(themeName);
+        themeButtons.forEach(b => b.classList.toggle('active', b === btn));
+    });
+});
+
+// По умолчанию активная тема
+document.querySelector('.theme-btn[data-theme="dark"]').classList.add('active');
+
+
