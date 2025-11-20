@@ -222,82 +222,73 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 document.addEventListener('DOMContentLoaded', () => {
 
-    document.addEventListener('DOMContentLoaded', () => {
+    // ---------- АВТОРЫ ----------
 
-    // ---------- АВТОРЛАР МӘТІНДЕРІ ----------
-    const authorsText = {
-        kk: {
-            rights: "Барлық құқықтар қорғалған © 2025",
-            authorsTitle: "Авторлар",
-            a1name: "Таупық Нұрислам",
-            a1text: "Репозиторий жасап, логикаға жауап берді.",
-            a2name: "Торыбай Нұрислам",
-            a2text: "Дизайн мен сайтқа жауап берді."
-        },
-        ru: {
-            rights: "Все права защищены © 2025",
-            authorsTitle: "Авторы",
-            a1name: "Таупык Нурислам",
-            a1text: "Создал репозиторий и отвечал за логику.",
-            a2name: "Торыбай Нурислам",
-            a2text: "Отвечал за дизайн и сайт."
-        },
-        en: {
-            rights: "All rights reserved © 2025",
-            authorsTitle: "Authors",
-            a1name: "Taupyk Nurislam",
-            a1text: "Created repository and was responsible for logic.",
-            a2name: "Toribay Nurislam",
-            a2text: "Responsible for design and the website."
-        }
-    };
+const authorsBtn = document.getElementById('authors-btn');
+const authorsModal = document.getElementById('authors-modal');
+const closeBtn = document.querySelector('.close-btn');
 
-    // ---------- МОДАЛКА ----------
-    const modal = document.getElementById("authors-modal");
-    const openBtn = document.getElementById("about-authors-btn");
-    const closeBtn = document.getElementById("modal-close");
-
-    openBtn.addEventListener("click", () => modal.style.display = "block");
-    closeBtn.addEventListener("click", () => modal.style.display = "none");
-    window.addEventListener("click", (e) => { if(e.target === modal) modal.style.display = "none"; });
-
-    // ---------- ТІЛ АУЫСТЫРУ (БАРЛЫҒЫ) ----------
-    const langButtons = document.querySelectorAll('.lang-btn');
-
-    function setLanguage(lang) {
-        currentLang = lang;
-
-        // --------- Блоктар мәтіндері ---------
-        const t = headings[lang];
-        document.getElementById('site-title').textContent = t.site;
-        document.getElementById('gallery-title').textContent = t.gallery;
-        document.getElementById('filter-title').textContent = t.filter;
-        document.getElementById('slider-title').textContent = t.slider;
-        document.getElementById('fav-title').textContent = t.fav;
-        document.getElementById('map-title').textContent = t.map;
-
-        updateGallery(lang);
-        showSlide(slideIndex);
-
-        // --------- Авторлар блогы ---------
-        const aText = authorsText[lang];
-        document.getElementById("footer-rights").textContent = aText.rights;
-        document.getElementById("authors-title").textContent = aText.authorsTitle;
-        document.getElementById("author1-name").textContent = aText.a1name;
-        document.getElementById("author1-text").textContent = aText.a1text;
-        document.getElementById("author2-name").textContent = aText.a2name;
-        document.getElementById("author2-text").textContent = aText.a2text;
-
-        // --------- Актив батырма ---------
-        langButtons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+const authorsText = {
+    kk: {
+        copyright: "© 2025 Барлық құқықтар қорғалған",
+        authorsTitle: "Авторлар",
+        authors: [
+            "Таупық Нұрислам: репозиторий мен логика үшін жауапты",
+            "Торыбай Нұрислам: дизайн және сайт"
+        ],
+        button: "Авторлар"
+    },
+    ru: {
+        copyright: "© 2025 Все права защищены",
+        authorsTitle: "Авторы",
+        authors: [
+            "Таупык Нурислам: отвечал за репозиторий и логику",
+            "Торыбай Нурислам: отвечал за дизайн и сайт"
+        ],
+        button: "Авторы"
+    },
+    en: {
+        copyright: "© 2025 All rights reserved",
+        authorsTitle: "Authors",
+        authors: [
+            "Taupyk Nurislam: responsible for repository and logic",
+            "Torybay Nurislam: responsible for design and site"
+        ],
+        button: "Authors"
     }
+};
 
-    // ---------- Слушатель батырмалары ----------
-    langButtons.forEach(btn => {
-        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
-    });
+function updateAuthors(lang) {
+    const t = authorsText[lang];
+    document.getElementById('copyright-text').textContent = t.copyright;
+    document.getElementById('authors-title').textContent = t.authorsTitle;
+    document.getElementById('authors-list').innerHTML = t.authors.map(a => `<li>${a}</li>`).join('');
+    authorsBtn.textContent = t.button;
+}
 
-    // ---------- Бастапқы тіл ----------
-    setLanguage("kk");
-
+// открыть модальное окно
+authorsBtn.addEventListener('click', () => {
+    authorsModal.style.display = "block";
 });
+
+// закрыть модальное окно
+closeBtn.addEventListener('click', () => {
+    authorsModal.style.display = "none";
+});
+
+// закрыть при клике вне окна
+window.addEventListener('click', (e) => {
+    if (e.target == authorsModal) {
+        authorsModal.style.display = "none";
+    }
+});
+
+// интеграция с переключением языка
+langButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        updateAuthors(btn.dataset.lang);
+    });
+});
+
+// инициализация
+updateAuthors(currentLang);

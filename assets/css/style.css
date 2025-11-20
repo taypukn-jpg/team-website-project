@@ -255,70 +255,77 @@ h2 {
     border: 3px solid #80cbc4;
     box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
-/* ====== FOOTER ====== */
+/* ========================= ФУТЕР ========================= */
 footer {
-    margin-top: 40px;
-    padding: 25px;
     text-align: center;
+    padding: 20px;
     background: #009688;
-    color: white;
-    font-size: 1.1rem;
-    border-top: 3px solid #00796b;
+    color: #fff;
+    font-weight: 500;
+    position: relative;
 }
 
-#about-authors-btn {
+#authors-btn {
     margin-top: 10px;
-    padding: 10px 22px;
-    background: #26a69a;
-    color: white;
+    padding: 8px 18px;
     border: none;
     border-radius: 12px;
+    background: #26a69a;
+    color: #fff;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1rem;
-    transition: 0.3s;
+    transition: 0.25s;
 }
 
-#about-authors-btn:hover {
-    background: #2bbbad;
-    transform: scale(1.05);
+#authors-btn:hover {
+    background: #00796b;
 }
 
-/* ====== МОДАЛЬНОЕ ОКНО ====== */
+/* ========================= МОДАЛЬ ========================= */
 .modal {
-    display: none;
+    display: none; /* скрыто по умолчанию */
     position: fixed;
-    z-index: 9999;
+    z-index: 999;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.45);
-    backdrop-filter: blur(3px);
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
 }
 
 .modal-content {
-    background: white;
-    width: 380px;
+    background-color: #fff;
     margin: 10% auto;
     padding: 25px;
     border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    text-align: center;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+    text-align: left;
 }
 
-#modal-close {
+.modal-content h3 {
+    margin-top: 0;
+    color: #00695c;
+}
+
+.modal-content ul {
+    padding-left: 20px;
+    font-weight: 500;
+    color: #004d40;
+}
+
+.close-btn {
+    color: #aaa;
     float: right;
-    font-size: 26px;
+    font-size: 28px;
+    font-weight: bold;
     cursor: pointer;
 }
 
-.author-item {
-    margin-top: 15px;
-    background: #f1fefb;
-    padding: 15px;
-    border-radius: 12px;
-    border-left: 4px solid #26a69a;
+.close-btn:hover {
+    color: #000;
 }
 
 
