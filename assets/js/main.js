@@ -47,7 +47,6 @@ const slides = [
 ];
 
 let slideIndex = 0;
-
 const slideImage = document.getElementById('slide-image');
 const slideCaption = document.getElementById('slide-caption');
 const prevBtn = document.getElementById('prev');
@@ -102,5 +101,10 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
 L.marker([49.5, 86.0]).addTo(map).bindPopup('Алтай таулары');
 L.marker([53.0, 71.5]).addTo(map).bindPopup('Бурабай');
 L.marker([43.2, 79.1]).addTo(map).bindPopup('Шарын шатқалы');
+L.marker([45.5, 79.2]).addTo(map).bindPopup('Көлсай көлдері');
+L.marker([43.2, 76.9]).addTo(map).bindPopup('Алматы');
+L.marker([43.0, 78.5]).addTo(map).bindPopup('Көлтаз');
+L.marker([51.2, 71.4]).addTo(map).bindPopup('Астана');
+L.marker([43.5, 69.8]).addTo(map).bindPopup('Қаратау');
+L.marker([45.6, 63.3]).addTo(map).bindPopup('Байқоңыр');
 
-    
