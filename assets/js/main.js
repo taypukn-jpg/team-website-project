@@ -1,113 +1,97 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // ==================== ПЕРЕМЕННЫЕ ====================
-    let currentLang = 'kk';
-    const langButtons = document.querySelectorAll('.lang-btn');
-    const authorsBtn = document.getElementById('authors-btn');
-    const authorsModal = document.getElementById('authors-modal');
-    const closeBtn = document.querySelector('.close-btn');
+    // Элементы
 
+    // =========================
+    // ИСХОДНЫЕ ЭЛЕМЕНТЫ
+    // =========================
     const places = document.querySelectorAll('.place');
     const favList = document.getElementById('fav-list');
 
-    // ==================== ТЕКСТЫ ====================
-    const galleryText = {
-        kk: {
-            "Алтай таулары": "Алтай таулары – керемет табиғат көрінісі.",
-            "Бурабай": "Бурабай – Қазақстанның «Кіші Швейцариясы».",
-            "Шарын шатқалы": "Шарын шатқалы – тарихи және табиғи ескерткіш.",
-            "Көлсай көлдері": "Көлсай көлдері – таулы көлдер тізбегі.",
-            "Алматы": "Алматы – мәдени және туристік орталық.",
-            "Көлтаз": "Көлтаз – тыныш табиғат аймағы.",
-            "Астана": "Астана – заманауи сәулет және саябақтар.",
-            "Қаратау": "Қаратау – Қазақстанның әсем таулы аймағы.",
-            "Байқоңыр": "Байқоңыр – ғарыш айлағы мен тарих."
-        },
-        ru: {
-            "Алтай таулары": "Алтайские горы — великолепные природные пейзажи.",
-            "Бурабай": "Бурабай — «Маленькая Швейцария» Казахстана.",
-            "Шарын шатқалы": "Шарынский каньон — природный и исторический памятник.",
-            "Көлсай көлдері": "Озёра Кольсай — горная цепь озёр.",
-            "Алматы": "Алматы — культурный и туристический центр.",
-            "Көлтаз": "Көлтаз — спокойная природная зона.",
-            "Астана": "Астана — современная архитектура и парки.",
-            "Қаратау": "Каратау — красивый горный район Казахстана.",
-            "Байқоңыр": "Байконур — космодром и исторический объект."
-        },
-        en: {
-            "Алтай таулары": "Altai Mountains — a stunning natural landscape.",
-            "Бурабай": "Burabay — Kazakhstan’s ‘Little Switzerland’.",
-            "Шарын шатқалы": "Charyn Canyon — a natural and historical monument.",
-            "Көлсай көлдері": "Kolsai Lakes — a chain of mountain lakes.",
-            "Алматы": "Almaty — a cultural and tourist center.",
-            "Көлтаз": "Koltaz — a peaceful natural area.",
-            "Астана": "Astana — modern architecture and parks.",
-            "Қаратау": "Karatau — a beautiful mountain region of Kazakhstan.",
-            "Байқоңыр": "Baikonur — spaceport and history."
-        }
-    };
+    // Favorites из localStorage
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    // Слайды
 
-    const sliderText = {
-        kk: ["Алтай таулары – керемет табиғат көрінісі.", "Бурабай – Қазақстанның «Кіші Швейцариясы».", "Шарын шатқалы – тарихи және табиғи ескерткіш."],
-        ru: ["Алтайские горы — великолепные природные пейзажи.", "Бурабай — «Маленькая Швейцария» Казахстана.", "Шарынский каньон — природный и исторический памятник."],
-        en: ["Altai Mountains — a stunning natural landscape.", "Burabay — Kazakhstan’s ‘Little Switzerland’.", "Charyn Canyon — a natural and historical monument."]
-    };
-
+    // =========================
+    // СЛАЙДЕР
+    // =========================
     const slides = [
-        { src: "https://avatars.mds.yandex.net/i?id=447256547577cf1aa1dbe8bfffeb4d43c784662f-4306866-images-thumbs&n=13" },
-        { src: "https://avatars.mds.yandex.net/i?id=88e86dbf49faac72671b826cd8e428f9b42c6c9a-16509561-images-thumbs&n=13" },
-        { src: "https://cdn.nur.kz/images/1200x675/fd1d9d9b2ac051cd.jpeg?version=1" }
+        {
+            src: "https://avatars.mds.yandex.net/i?id=447256547577cf1aa1dbe8bfffeb4d43c784662f-4306866-images-thumbs&n=13",
+            caption: "Алтай таулары – керемет табиғат көрінісі."
+        },
+        {
+            src: "https://avatars.mds.yandex.net/i?id=88e86dbf49faac72671b826cd8e428f9b42c6c9a-16509561-images-thumbs&n=13",
+            caption: "Бурабай – Қазақстанның «Кіші Швейцариясы»."
+        },
+        {
+            src: "https://cdn.nur.kz/images/1200x675/fd1d9d9b2ac051cd.jpeg?version=1",
+            caption: "Шарын шатқалы – тарихи және табиғи ескерткіш."
+        }
     ];
 
-    const headings = {
-        kk: { site: "Қазақстандағы Танымал Туристік Орындар", gallery: "Галерея", filter: "Фильтр", slider: "Танымал орындар", fav: "Сүйікті орындар", map: "Қазақстан картасы" },
-        ru: { site: "Популярные туристические места Казахстана", gallery: "Галерея", filter: "Фильтр", slider: "Популярные места", fav: "Избранные места", map: "Карта Казахстана" },
-        en: { site: "Popular Tourist Places in Kazakhstan", gallery: "Gallery", filter: "Filter", slider: "Popular Places", fav: "Favorite Places", map: "Map of Kazakhstan" }
-    };
-
-    const authorsText = {
-        kk: { copyright: "© 2025 Барлық құқықтар қорғалған", authorsTitle: "Авторлар", authors: ["Таупық Нұрислам: репозиторий мен логика үшін жауапты", "Торыбай Нұрислам: дизайн және сайт"], button: "Авторлар" },
-        ru: { copyright: "© 2025 Все права защищены", authorsTitle: "Авторы", authors: ["Таупык Нурислам: отвечал за репозиторий и логику", "Торыбай Нурислам: отвечал за дизайн и сайт"], button: "Авторы" },
-        en: { copyright: "© 2025 All rights reserved", authorsTitle: "Authors", authors: ["Taupyk Nurislam: responsible for repository and logic", "Torybay Nurislam: responsible for design and site"], button: "Authors" }
-    };
-
-    // ==================== СЛАЙДЕР ====================
     let slideIndex = 0;
     const slideImage = document.getElementById('slide-image');
     const slideCaption = document.getElementById('slide-caption');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
 
     function showSlide(index) {
+        if (!slides.length) return;
         slideIndex = ((index % slides.length) + slides.length) % slides.length;
         slideImage.src = slides[slideIndex].src;
-        slideCaption.textContent = sliderText[currentLang][slideIndex];
+        slideCaption.textContent = slides[slideIndex].caption;
     }
 
-    document.getElementById('prev').addEventListener('click', () => showSlide(slideIndex - 1));
-    document.getElementById('next').addEventListener('click', () => showSlide(slideIndex + 1));
+    showSlide(slideIndex);
 
-    showSlide(0);
+    prevBtn.addEventListener('click', () => showSlide(slideIndex - 1));
+    nextBtn.addEventListener('click', () => showSlide(slideIndex + 1));
 
-    // ==================== ИЗБРАННОЕ ====================
-    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    // Автоплей
+    let autoPlay = true;
+    let autoId = null;
+    function startAuto() {
+        if (!autoPlay || slides.length <= 1) return;
+        autoId = setInterval(() => {
+            showSlide(slideIndex + 1);
+        }, 5000);
+    }
+    function stopAuto() {
+        if (autoId) clearInterval(autoId);
+    }
+    const slideContainer = document.querySelector('.slide-container');
+    slideContainer.addEventListener('mouseenter', stopAuto);
+    slideContainer.addEventListener('mouseleave', startAuto);
+    startAuto();
 
+    // =========================
+    // ИЗБРАННОЕ
+    // =========================
     function updateFavorites() {
         favList.innerHTML = '';
         favorites.forEach(name => {
             const li = document.createElement('li');
             li.textContent = name;
             li.dataset.name = name;
+
             const btn = document.createElement('button');
             btn.textContent = '×';
             btn.className = 'fav-remove';
+            btn.title = 'Удалить из избранного';
             li.appendChild(btn);
+
             favList.appendChild(li);
         });
     }
 
     updateFavorites();
+    
+    // Добавление в избранное по клику на карточку (делегирование)
 
     places.forEach(place => {
-        place.addEventListener('click', () => {
+        place.addEventListener('click', (e) => {
             const name = place.dataset.name;
+            if (!name) return;
             if (!favorites.includes(name)) {
                 favorites.push(name);
                 localStorage.setItem('favorites', JSON.stringify(favorites));
@@ -119,26 +103,36 @@ document.addEventListener('DOMContentLoaded', () => {
     favList.addEventListener('click', (e) => {
         if (e.target.classList.contains('fav-remove')) {
             const li = e.target.closest('li');
-            const name = li.dataset.name;
+            const name = li && li.dataset.name;
+            if (!name) return;
             favorites = favorites.filter(n => n !== name);
             localStorage.setItem('favorites', JSON.stringify(favorites));
             updateFavorites();
         }
     });
 
-    // ==================== ФИЛЬТР ====================
+    // =========================
+    // ФИЛЬТР
+    // =========================
     const filterButtons = document.querySelectorAll('#filter button');
     filterButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             const type = btn.dataset.type;
             places.forEach(place => {
                 const placeType = place.dataset.type;
+                if (type === 'all' || type === placeType) {
+                    place.style.display = 'block';
+                } else {
+                    place.style.display = 'none';
+                }
                 place.style.display = (type === 'all' || type === placeType) ? 'block' : 'none';
             });
         });
     });
 
-    // ==================== КАРТА ====================
+    // =========================
+    // LEAFLET КАРТА
+    // =========================
     const map = L.map('mapid').setView([48.0, 66.9], 5);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
@@ -156,26 +150,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     markers.forEach(m => L.marker(m.coords).addTo(map).bindPopup(m.name));
 
-    // ==================== ФУНКЦИИ ЯЗЫКА ====================
-    function updateGallery(lang) {
-        places.forEach(place => {
-            const name = place.dataset.name;
-            const p = place.querySelector('p');
-            p.textContent = galleryText[lang][name];
-        });
-    }
+    // =========================
+    // ПЕРЕКЛЮЧЕНИЕ ЯЗЫКОВ
+    // =========================
+    const langButtons = document.querySelectorAll('.lang-btn');
+    const headings = {
+        kk: { site: "Қазақстандағы Танымал Туристік Орындар", gallery: "Галерея", filter: "Фильтр", slider: "Танымал орындар", fav: "Сүйікті орындар", map: "Қазақстан картасы" },
+        ru: { site: "Популярные туристические места Казахстана", gallery: "Галерея", filter: "Фильтр", slider: "Популярные места", fav: "Избранные места", map: "Карта Казахстана" },
+        en: { site: "Popular Tourist Places in Kazakhstan", gallery: "Gallery", filter: "Filter", slider: "Popular Places", fav: "Favorite Places", map: "Map of Kazakhstan" }
+    };
 
     function setLanguage(lang) {
-        currentLang = lang;
-
-        const t = headings[lang];
+        const t = headings[lang] || headings.kk;
         document.getElementById('site-title').textContent = t.site;
         document.getElementById('gallery-title').textContent = t.gallery;
         document.getElementById('filter-title').textContent = t.filter;
         document.getElementById('slider-title').textContent = t.slider;
         document.getElementById('fav-title').textContent = t.fav;
         document.getElementById('map-title').textContent = t.map;
-
         updateGallery(lang);
         updateAuthors(lang);
         showSlide(slideIndex);
@@ -183,101 +175,63 @@ document.addEventListener('DOMContentLoaded', () => {
         langButtons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
     }
 
+    setLanguage('kk');
+
     langButtons.forEach(btn => {
-        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+        btn.addEventListener('click', () => {
+            setLanguage(btn.dataset.lang);
+        });
     });
 
-    // ==================== АВТОРЫ ====================
-    function updateAuthors(lang) {
-        const t = authorsText[lang];
-        document.getElementById('copyright-text').textContent = t.copyright;
-        document.getElementById('authors-title').textContent = t.authorsTitle;
-        document.getElementById('authors-list').innerHTML = t.authors.map(a => `<li>${a}</li>`).join('');
-        if (authorsBtn) authorsBtn.textContent = t.button;
-    }
+    // =========================
+    // БЛОКИ ГОРОДОВ
+    // =========================
+    const citiesContainer = document.getElementById('cities-container');
 
-    if (authorsBtn && authorsModal && closeBtn) {
-        authorsBtn.addEventListener('click', () => authorsModal.style.display = 'block');
-        closeBtn.addEventListener('click', () => authorsModal.style.display = 'none');
-        window.addEventListener('click', e => { if (e.target === authorsModal) authorsModal.style.display = 'none'; });
-    }
+    const cities = [
+        { name: 'Астана', photos: 7 },
+        { name: 'Алматы', photos: 7 },
+        { name: 'Шымкент', photos: 5 },
+        { name: 'Қарағанды', photos: 5 },
+        { name: 'Өскемен', photos: 5 },
+        { name: 'Түркістан', photos: 5 },
+        { name: 'Бурабай', photos: 5 },
+        { name: 'Шарын шатқалы', photos: 5 },
+        { name: 'Көлсай көлдері', photos: 5 },
+        { name: 'Қаратау', photos: 5 },
+        { name: 'Байқоңыр', photos: 5 },
+        { name: 'Алтай таулары', photos: 5 },
+        { name: 'Көлтаз', photos: 5 },
+        { name: 'Баян-Аул', photos: 5 },
+        { name: 'Бурабай көлдері', photos: 5 },
+        { name: 'Алматы таулары', photos: 5 },
+        { name: 'Тянь-Шань', photos: 5 },
+        { name: 'Іле Алатауы', photos: 5 }
+    ];
 
-    // ==================== ИНИЦИАЛИЗАЦИЯ ====================
-    setLanguage(currentLang);
-});
-// ==================== ТЕМЫ ====================
-const themes = {
-    dark: {
-        '--bg-color': '#121212',
-        '--text-color': '#eee',
-        '--header-bg': '#1f1f1f',
-        '--header-text': '#fff',
-        '--btn-bg': '#333',
-        '--btn-active': '#bb86fc',
-        '--slider-bg': '#1e1e1e',
-        '--slider-text': '#bb86fc',
-        '--favorites-bg': '#1e1e1e',
-        '--favorites-text': '#bb86fc'
-    },
-    light: {
-        '--bg-color': '#e3f6ff',
-        '--text-color': '#222',
-        '--header-bg': 'linear-gradient(90deg, #009688, #26a69a)',
-        '--header-text': '#fff',
-        '--btn-bg': 'rgba(20,20,35,0.7)',
-        '--btn-active': '#9d4cff',
-        '--slider-bg': '#ffffff',
-        '--slider-text': '#00695c',
-        '--favorites-bg': '#ffffff',
-        '--favorites-text': '#004d40'
-    },
-    ocean: {
-        '--bg-color': '#d0f0fd',
-        '--text-color': '#03396c',
-        '--header-bg': '#0077b6',
-        '--header-text': '#fff',
-        '--btn-bg': '#00b4d8',
-        '--btn-active': '#023e8a',
-        '--slider-bg': '#caf0f8',
-        '--slider-text': '#0077b6',
-        '--favorites-bg': '#ade8f4',
-        '--favorites-text': '#023e8a'
-    },
-    sunset: {
-        '--bg-color': '#fff0e6',
-        '--text-color': '#5c1a00',
-        '--header-bg': '#ff7f50',
-        '--header-text': '#fff',
-        '--btn-bg': '#ffb347',
-        '--btn-active': '#ff4500',
-        '--slider-bg': '#ffe6d9',
-        '--slider-text': '#b34700',
-        '--favorites-bg': '#ffd9b3',
-        '--favorites-text': '#b34700'
-    }
-};
+    cities.forEach(city => {
+        const block = document.createElement('div');
+        block.className = 'city-block';
 
-function setTheme(themeName) {
-    const theme = themes[themeName];
-    if (!theme) return;
-    for (let key in theme) {
-        document.documentElement.style.setProperty(key, theme[key]);
-    }
-}
+        const title = document.createElement('h3');
+        title.className = 'city-name';
+        title.textContent = city.name;
+        block.appendChild(title);
 
-const themeButtons = document.querySelectorAll('.theme-btn');
+        const photosContainer = document.createElement('div');
+        photosContainer.className = 'city-photos';
 
-themeButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const themeName = btn.dataset.theme;
-        setTheme(themeName);
+        for (let i = 1; i <= city.photos; i++) {
+            const img = document.createElement('img');
+            img.src = `https://via.placeholder.com/150?text=${city.name}+${i}`;
+            img.alt = `${city.name} фото ${i}`;
+            photosContainer.appendChild(img);
+        }
 
-        // Подсветка активной кнопки
-        themeButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+        block.appendChild(photosContainer);
+        citiesContainer.appendChild(block);
     });
 });
-
 // Тема по умолчанию
 document.querySelector('.theme-btn[data-theme="dark"]').classList.add('active');
 setTheme('dark');
