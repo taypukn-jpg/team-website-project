@@ -35,7 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "Тянь-Шань": "Тянь-Шань – биік шыңдар мен треккинг жолдары.",
             "Боровое": "Боровое – орман, көлдер және әдемі жартас.",
             "Кокшетау": "Кокшетау – таулар мен көлдер аймағы.",
-            "Сайрам-Өгем": "Сайрам-Өгем – Оңтүстік Қазақстан табиғаты."
+            "Сайрам-Өгем": "Сайрам-Өгем – Оңтүстік Қазақстан табиғаты.",
+            "Шымбулак": "Шымбулак – Алматыдағы тау шаңғысы курорты."
         },
         ru: {
             "Алтай таулары": "Алтайские горы — одно из красивейших мест Казахстана. Снежные вершины, густые леса и чистейшие озёра привлекают тысячи туристов.",
@@ -54,8 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "Тянь-Шань": "Тянь-Шань – высокие вершины и треккинг маршруты.",
             "Боровое": "Боровое – лес, озёра и красивые скалы.",
             "Кокшетау": "Кокшетау – горы и озёра Акмолинской области.",
-            "Сайрам-Өгем": "Сайрам-Огем – природа юга Казахстана."
-
+            "Сайрам-Өгем": "Сайрам-Огем – природа юга Казахстана.",
+            "Шымбулак": "Шымбулак – горнолыжный курорт в Алматы."
         },
         en: {
             "Алтай таулары": "The Altai Mountains are one of Kazakhstan’s most beautiful natural regions, known for snowy peaks, forests, and clear lakes.",
@@ -74,8 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "Тянь-Шань": "Tian Shan – high peaks and trekking routes.",
             "Боровое": "Borovoe – forests, lakes, and beautiful cliffs.",
             "Кокшетау": "Kokshetau – mountains and lakes region.",
-            "Сайрам-Өгем": "Sairam-Ögem – nature of southern Kazakhstan."
-
+            "Сайрам-Өгем": "Sairam-Ögem – nature of southern Kazakhstan.",
+            "Шымбулак": "Shymbulak – ski resort in Almaty."
         }
     };
 
