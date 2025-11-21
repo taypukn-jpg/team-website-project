@@ -424,45 +424,4 @@ document.addEventListener('DOMContentLoaded', () => {
   updateAuthors(currentLang);
   showSlide(0);
 });
-// ==================== МОДАЛЬНОЕ ОКНО ГАЛЕРЕИ ====================
-const galleryModal = document.getElementById("gallery-modal");
-const modalImg = document.getElementById("gallery-modal-image");
-const modalTitle = document.getElementById("gallery-modal-title");
-const modalDesc = document.getElementById("gallery-modal-desc");
-const galleryClose = document.getElementById("gallery-close");
-
-// Описание для каждого места
-const galleryInfo = {
-    "Алтай таулары": "Алтай — Қазақстанның ең әдемі табиғат аймақтарының бірі. Мұнда орман, тау және өзендер ерекше үйлеседі.",
-    "Бурабай": "Бурабай — Қазақстанның інжу-маржаны. Көлдер мен тау жоталарының керемет көріністері бар.",
-    "Қайыңды көлі": "Қайыңды — су астында тұрған ағаштарымен ерекше танымал табиғи көл.",
-    "Алматы": "Алматы — Қазақстанның ең ірі қалаларының бірі, табиғаты мен мәдениетімен танымал.",
-    "Астана": "Астана — елорда, заманауи архитектурасы және көрікті жерлерімен әйгілі.",
-    "Қаратау": "Қаратау табиғи қорығы — дала табиғаты мен ежелгі жоталардың ерекше аймағы."
-};
-
-// Открытие модального окна при клике на место
-document.querySelectorAll(".place").forEach(place => {
-    place.addEventListener("click", () => {
-        const title = place.querySelector("h3").textContent;
-        const image = place.querySelector("img").src;
-
-        modalImg.src = image;
-        modalTitle.textContent = title;
-        modalDesc.textContent = galleryInfo[title] || "Бұл жер туралы ақпарат жақында қосылады.";
-
-        galleryModal.classList.remove("hidden");
-    });
-});
-
-// Закрытие
-galleryClose.addEventListener("click", () => {
-    galleryModal.classList.add("hidden");
-});
-
-// Закрытие по клику вне окна
-galleryModal.addEventListener("click", (e) => {
-    if (e.target === galleryModal) galleryModal.classList.add("hidden");
-});
-
 
