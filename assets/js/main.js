@@ -39,7 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "Көлтаз": "Көлтаз — спокойная природная зона, идеальная для отдыха.",
             "Астана": "Астана славится своей современной архитектурой и зелёными парками.",
             "Қаратау": "Горы Каратау — место с удивительной природой и историей.",
-            "Байқоңыр": "Байконур — первый космодром мира, связанный с развитием космической отрасли."
+            "Байқоңыр": "Байконур — первый космодром мира, связанный с развитием космической отрасли.",
+            "Медеу": "Медеу – популярный горнолыжный курорт и открытый каток."
         },
         en: {
             "Алтай таулары": "The Altai Mountains are one of Kazakhstan’s most beautiful natural regions, known for snowy peaks, forests, and clear lakes.",
@@ -50,7 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "Көлтаз": "Koltaz is a peaceful natural area perfect for quiet relaxation.",
             "Астана": "Astana is famous for its modern architecture and beautiful parks.",
             "Қаратау": "Karatau Mountains feature rich history and unique landscapes.",
-            "Байқоңыр": "Baikonur is the world’s first spaceport with major historical significance."
+            "Байқоңыр": "Baikonur is the world’s first spaceport with major historical significance.",
+            "Медеу": "Medeu a famous mountain ski area and open-air skating rink."
         }
     };
 
