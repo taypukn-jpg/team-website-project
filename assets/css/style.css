@@ -257,61 +257,6 @@ h2 {
 }
 
 /* =========================
-   ГОРОДА (НОВЫЕ БЛОКИ)
-========================= */
-#cities-gallery {
-    padding: 30px;
-}
-
-#cities-gallery h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 25px;
-    font-weight: 700;
-    color: #00796b;
-}
-
-#cities-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
-    justify-content: center;
-}
-
-.city-block {
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 15px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    border: 2px solid #b2dfdb;
-    width: 300px;
-}
-
-.city-name {
-    margin: 0 0 10px 0;
-    font-size: 1.4rem;
-    color: #004d40;
-    font-weight: 600;
-}
-
-.city-photos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    overflow: hidden;
-}
-
-.city-photos img {
-    width: calc(33.33% - 4px);
-    border-radius: 12px;
-    transition: transform 0.4s ease;
-}
-
-.city-photos img:hover {
-    transform: scale(1.1);
-}
-
-/* =========================
    ФУТЕР
 ========================= */
 footer {
@@ -324,5 +269,3 @@ footer {
 }
 
 #authors-btn {}
-
-

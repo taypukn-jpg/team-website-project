@@ -1,19 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Элементы
-
-    // =========================
-    // ИСХОДНЫЕ ЭЛЕМЕНТЫ
-    // =========================
     const places = document.querySelectorAll('.place');
     const favList = document.getElementById('fav-list');
 
     // Favorites из localStorage
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    // Слайды
 
-    // =========================
-    // СЛАЙДЕР
-    // =========================
+    // Слайды
     const slides = [
         {
             src: "https://avatars.mds.yandex.net/i?id=447256547577cf1aa1dbe8bfffeb4d43c784662f-4306866-images-thumbs&n=13",
@@ -35,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.getElementById('prev');
     const nextBtn = document.getElementById('next');
 
+    // Инициализация слайдера (проверка)
     function showSlide(index) {
         if (!slides.length) return;
         slideIndex = ((index % slides.length) + slides.length) % slides.length;
@@ -47,47 +41,26 @@ document.addEventListener('DOMContentLoaded', () => {
     prevBtn.addEventListener('click', () => showSlide(slideIndex - 1));
     nextBtn.addEventListener('click', () => showSlide(slideIndex + 1));
 
-    // Автоплей
-    let autoPlay = true;
-    let autoId = null;
-    function startAuto() {
-        if (!autoPlay || slides.length <= 1) return;
-        autoId = setInterval(() => {
-            showSlide(slideIndex + 1);
-        }, 5000);
-    }
-    function stopAuto() {
-        if (autoId) clearInterval(autoId);
-    }
-    const slideContainer = document.querySelector('.slide-container');
-    slideContainer.addEventListener('mouseenter', stopAuto);
-    slideContainer.addEventListener('mouseleave', startAuto);
-    startAuto();
-
-    // =========================
-    // ИЗБРАННОЕ
-    // =========================
+    // Обновление избранного UI
     function updateFavorites() {
         favList.innerHTML = '';
         favorites.forEach(name => {
             const li = document.createElement('li');
             li.textContent = name;
             li.dataset.name = name;
-
+            // можно добавить кнопку удалить
             const btn = document.createElement('button');
             btn.textContent = '×';
             btn.className = 'fav-remove';
             btn.title = 'Удалить из избранного';
             li.appendChild(btn);
-
             favList.appendChild(li);
         });
     }
 
     updateFavorites();
-    
-    // Добавление в избранное по клику на карточку (делегирование)
 
+    // Добавление в избранное по клику на карточку (делегирование)
     places.forEach(place => {
         place.addEventListener('click', (e) => {
             const name = place.dataset.name;
@@ -100,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Удаление из избранного (делегирование на ul)
     favList.addEventListener('click', (e) => {
         if (e.target.classList.contains('fav-remove')) {
             const li = e.target.closest('li');
@@ -111,9 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // =========================
-    // ФИЛЬТР
-    // =========================
+    // Фильтр
     const filterButtons = document.querySelectorAll('#filter button');
     filterButtons.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -125,14 +97,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     place.style.display = 'none';
                 }
-                place.style.display = (type === 'all' || type === placeType) ? 'block' : 'none';
             });
         });
     });
 
-    // =========================
-    // LEAFLET КАРТА
-    // =========================
+    // Leaflet карта
     const map = L.map('mapid').setView([48.0, 66.9], 5);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
@@ -150,14 +119,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     markers.forEach(m => L.marker(m.coords).addTo(map).bindPopup(m.name));
 
-    // =========================
-    // ПЕРЕКЛЮЧЕНИЕ ЯЗЫКОВ
-    // =========================
+    // Переключение языков (кнопки)
     const langButtons = document.querySelectorAll('.lang-btn');
     const headings = {
-        kk: { site: "Қазақстандағы Танымал Туристік Орындар", gallery: "Галерея", filter: "Фильтр", slider: "Танымал орындар", fav: "Сүйікті орындар", map: "Қазақстан картасы" },
-        ru: { site: "Популярные туристические места Казахстана", gallery: "Галерея", filter: "Фильтр", slider: "Популярные места", fav: "Избранные места", map: "Карта Казахстана" },
-        en: { site: "Popular Tourist Places in Kazakhstan", gallery: "Gallery", filter: "Filter", slider: "Popular Places", fav: "Favorite Places", map: "Map of Kazakhstan" }
+        kk: {
+            site: "Қазақстандағы Танымал Туристік Орындар",
+            gallery: "Галерея",
+            filter: "Фильтр",
+            slider: "Танымал орындар",
+            fav: "Сүйікті орындар",
+            map: "Қазақстан картасы"
+        },
+        ru: {
+            site: "Популярные туристические места Казахстана",
+            gallery: "Галерея",
+            filter: "Фильтр",
+            slider: "Популярные места",
+            fav: "Избранные места",
+            map: "Карта Казахстана"
+        },
+        en: {
+            site: "Popular Tourist Places in Kazakhstan",
+            gallery: "Gallery",
+            filter: "Filter",
+            slider: "Popular Places",
+            fav: "Favorite Places",
+            map: "Map of Kazakhstan"
+        }
     };
 
     function setLanguage(lang) {
@@ -168,13 +156,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('slider-title').textContent = t.slider;
         document.getElementById('fav-title').textContent = t.fav;
         document.getElementById('map-title').textContent = t.map;
-        updateGallery(lang);
-        updateAuthors(lang);
-        showSlide(slideIndex);
 
         langButtons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
     }
 
+    // Инициализация языка по умолчанию
     setLanguage('kk');
 
     langButtons.forEach(btn => {
@@ -183,58 +169,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // =========================
-    // БЛОКИ ГОРОДОВ
-    // =========================
-    const citiesContainer = document.getElementById('cities-container');
-
-    const cities = [
-        { name: 'Астана', photos: 7 },
-        { name: 'Алматы', photos: 7 },
-        { name: 'Шымкент', photos: 5 },
-        { name: 'Қарағанды', photos: 5 },
-        { name: 'Өскемен', photos: 5 },
-        { name: 'Түркістан', photos: 5 },
-        { name: 'Бурабай', photos: 5 },
-        { name: 'Шарын шатқалы', photos: 5 },
-        { name: 'Көлсай көлдері', photos: 5 },
-        { name: 'Қаратау', photos: 5 },
-        { name: 'Байқоңыр', photos: 5 },
-        { name: 'Алтай таулары', photos: 5 },
-        { name: 'Көлтаз', photos: 5 },
-        { name: 'Баян-Аул', photos: 5 },
-        { name: 'Бурабай көлдері', photos: 5 },
-        { name: 'Алматы таулары', photos: 5 },
-        { name: 'Тянь-Шань', photos: 5 },
-        { name: 'Іле Алатауы', photos: 5 }
-    ];
-
-    cities.forEach(city => {
-        const block = document.createElement('div');
-        block.className = 'city-block';
-
-        const title = document.createElement('h3');
-        title.className = 'city-name';
-        title.textContent = city.name;
-        block.appendChild(title);
-
-        const photosContainer = document.createElement('div');
-        photosContainer.className = 'city-photos';
-
-        for (let i = 1; i <= city.photos; i++) {
-            const img = document.createElement('img');
-            img.src = `https://via.placeholder.com/150?text=${city.name}+${i}`;
-            img.alt = `${city.name} фото ${i}`;
-            photosContainer.appendChild(img);
-        }
-
-        block.appendChild(photosContainer);
-        citiesContainer.appendChild(block);
-    });
+    // Дополнительно: автоплей слайдера (опционально)
+    let autoPlay = true;
+    let autoId = null;
+    function startAuto() {
+        if (!autoPlay || slides.length <= 1) return;
+        autoId = setInterval(() => {
+            showSlide(slideIndex + 1);
+        }, 5000);
+    }
+    function stopAuto() {
+        if (autoId) clearInterval(autoId);
+    }
+    // запуск автоплея
+    startAuto();
+    // останавливать при наведении на слайдер
+    const slideContainer = document.querySelector('.slide-container');
+    slideContainer.addEventListener('mouseenter', stopAuto);
+    slideContainer.addEventListener('mouseleave', startAuto);
 });
-// Тема по умолчанию
-document.querySelector('.theme-btn[data-theme="dark"]').classList.add('active');
-setTheme('dark');
 
 
 
