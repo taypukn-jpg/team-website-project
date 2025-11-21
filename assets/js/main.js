@@ -255,7 +255,19 @@ document.addEventListener('DOMContentLoaded', () => {
         { coords: [43.0, 78.5], name: 'Көлтаз' },
         { coords: [51.2, 71.4], name: 'Астана' },
         { coords: [43.5, 69.8], name: 'Қаратау' },
-        { coords: [45.6, 63.3], name: 'Байқоңыр' }
+        { coords: [45.6, 63.3], name: 'Байқоңыр' },
+        { coords: [43.2, 76.9], name: 'Медеу' },
+        { coords: [43.8, 77.0], name: 'Капшагай' },
+        { coords: [43.6, 51.1], name: 'Актау' },
+        { coords: [43.1, 78.3], name: 'Жетысу' },
+        { coords: [42.0, 80.0], name: 'Тянь-Шань' },
+        { coords: [53.0, 70.3], name: 'Боровое' },
+        { coords: [53.2, 69.3], name: 'Кокшетау' },
+        { coords: [42.2, 70.1], name: 'Сайрам-Өгем' },
+        { coords: [43.1, 77.0], name: 'Шымбулак' },
+        { coords: [43.2, 77.8], name: 'Тургень' }
+
+
     ];
 
     markers.forEach(m => L.marker(m.coords).addTo(map).bindPopup(m.name));
