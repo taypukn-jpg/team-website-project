@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "Байқоңыр": "Байқоңыр — әлемдегі алғашқы ғарыш айлағы. Мұнда адамзат тарихындағы алғашқы ғарыш сапары басталды.",
             "Медеу": "Медеу - танымал тау шаңғысы аймағы және ашық каток.",
             "Капшагай": "Капшагай – суда демалыс және балық аулау орны.",
-            "Актау": "Актау – ақ таулар мен керемет ландшафт."
+            "Актау": "Актау – ақ таулар мен керемет ландшафт.",
+            "Жетысу": "Жетысу – таулы аймақтағы әдемі көлдер."
         },
         ru: {
             "Алтай таулары": "Алтайские горы — одно из красивейших мест Казахстана. Снежные вершины, густые леса и чистейшие озёра привлекают тысячи туристов.",
@@ -44,7 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "Байқоңыр": "Байконур — первый космодром мира, связанный с развитием космической отрасли.",
             "Медеу": "Медеу – популярный горнолыжный курорт и открытый каток.",
             "Капшагай": "Капшагай – место для отдыха у воды и рыбалки.",
-            "Актау": "Актау – белые скалы и живописные пейзажи."
+            "Актау": "Актау – белые скалы и живописные пейзажи.",
+            "Жетысу": "Жетысу – красивые горные озера."
         },
         en: {
             "Алтай таулары": "The Altai Mountains are one of Kazakhstan’s most beautiful natural regions, known for snowy peaks, forests, and clear lakes.",
@@ -58,7 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "Байқоңыр": "Baikonur is the world’s first spaceport with major historical significance.",
             "Медеу": "Medeu a famous mountain ski area and open-air skating rink.",
             "Капшагай": "Kapshagai – a spot for water recreation and fishing.",
-            "Актау": "Aktau – white cliffs and stunning landscapes."
+            "Актау": "Aktau – white cliffs and stunning landscapes.",
+            "Жетысу": "Zhetysu Lakes – beautiful mountain lakes."
         }
     };
 
