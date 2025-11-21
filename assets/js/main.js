@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "Боровое": "Боровое – орман, көлдер және әдемі жартас.",
             "Кокшетау": "Кокшетау – таулар мен көлдер аймағы.",
             "Сайрам-Өгем": "Сайрам-Өгем – Оңтүстік Қазақстан табиғаты.",
-            "Шымбулак": "Шымбулак – Алматыдағы тау шаңғысы курорты."
+            "Шымбулак": "Шымбулак – Алматыдағы тау шаңғысы курорты.",
+            "Тургень": "Тургень – Алматы жақын жердегі әдемі сарқырама."
         },
         ru: {
             "Алтай таулары": "Алтайские горы — одно из красивейших мест Казахстана. Снежные вершины, густые леса и чистейшие озёра привлекают тысячи туристов.",
@@ -56,7 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "Боровое": "Боровое – лес, озёра и красивые скалы.",
             "Кокшетау": "Кокшетау – горы и озёра Акмолинской области.",
             "Сайрам-Өгем": "Сайрам-Огем – природа юга Казахстана.",
-            "Шымбулак": "Шымбулак – горнолыжный курорт в Алматы."
+            "Шымбулак": "Шымбулак – горнолыжный курорт в Алматы.",
+            "Тургень": "Тургень – красивый водопад рядом с Алматы."
         },
         en: {
             "Алтай таулары": "The Altai Mountains are one of Kazakhstan’s most beautiful natural regions, known for snowy peaks, forests, and clear lakes.",
@@ -76,7 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "Боровое": "Borovoe – forests, lakes, and beautiful cliffs.",
             "Кокшетау": "Kokshetau – mountains and lakes region.",
             "Сайрам-Өгем": "Sairam-Ögem – nature of southern Kazakhstan.",
-            "Шымбулак": "Shymbulak – ski resort in Almaty."
+            "Шымбулак": "Shymbulak – ski resort in Almaty.",
+            "Тургень": "Turgen Waterfall – beautiful waterfall near Almaty."
         }
     };
 
