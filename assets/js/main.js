@@ -10,64 +10,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const favList = document.getElementById('fav-list');
 
     // ==================== ТЕКСТЫ ====================
-    const placeNames = {
-        kk: {
-            "Алтай таулары": "Алтай таулары", "Бурабай": "Бурабай", "Шарын шатқалы": "Шарын шатқалы",
-            "Көлсай көлдері": "Көлсай көлдері", "Алматы": "Алматы", "Көлтаз": "Көлтаз",
-            "Астана": "Астана", "Қаратау": "Қаратау", "Байқоңыр": "Байқоңыр"
-        },
-        ru: {
-            "Алтай таулары": "Алтайские горы", "Бурабай": "Бурабай", "Шарын шатқалы": "Шарынский каньон",
-            "Көлсай көлдері": "Кольсайские озёра", "Алматы": "Алматы", "Көлтаз": "Кольтаз",
-            "Астана": "Астана", "Қаратау": "Горы Каратау", "Байқоңыр": "Байконур"
-        },
-        en: {
-            "Алтай таулары": "Altai Mountains", "Бурабай": "Burabay", "Шарын шатқалы": "Charyn Canyon",
-            "Көлсай көлдері": "Kolsai Lakes", "Алматы": "Almaty", "Көлтаз": "Koltaz",
-            "Астана": "Astana", "Қаратау": "Karatau Mountains", "Байқоңыр": "Baikonur"
-        }
-    };
-
     const galleryText = {
-        kk: {
-            "Алтай таулары": "Алтай таулары – керемет табиғат көрінісі.",
-            "Бурабай": "Бурабай – Қазақстанның «Кіші Швейцариясы».",
-            "Шарын шатқалы": "Шарын шатқалы – тарихи және табиғи ескерткіш.",
-            "Көлсай көлдері": "Көлсай көлдері – таулы көлдер тізбегі.",
-            "Алматы": "Алматы – мәдени және туристік орталық.",
-            "Көлтаз": "Көлтаз – тыныш табиғат аймағы.",
-            "Астана": "Астана – заманауи сәулет және саябақтар.",
-            "Қаратау": "Қаратау – Қазақстанның әсем таулы аймағы.",
-            "Байқоңыр": "Байқоңыр – ғарыш айлағы мен тарих."
-        },
-        ru: {
-            "Алтай таулары": "Алтайские горы — великолепные природные пейзажи.",
-            "Бурабай": "Бурабай — «Маленькая Швейцария» Казахстана.",
-            "Шарын шатқалы": "Шарынский каньон — природный и исторический памятник.",
-            "Көлсай көлдері": "Озёра Кольсай — три горных озера.",
-            "Алматы": "Алматы — культурный центр Казахстана.",
-            "Көлтаз": "Кольтаз — спокойная природная зона.",
-            "Астана": "Астана — современная архитектура и парки.",
-            "Қаратау": "Горы Каратау — красивые и исторические.",
-            "Байқоңыр": "Байконур — первый космодром мира."
-        },
-        en: {
-            "Алтай таулары": "Altai Mountains — a stunning natural landscape.",
-            "Бурабай": "Burabay — Kazakhstan’s ‘Little Switzerland’.",
-            "Шарын шатқалы": "Charyn Canyon — a natural and historical monument.",
-            "Көлсай көлдері": "Kolsai Lakes — three mountain lakes.",
-            "Алматы": "Almaty — cultural and tourist center.",
-            "Көлтаз": "Koltaz — peaceful natural area.",
-            "Астана": "Astana — modern architecture and parks.",
-            "Қаратау": "Karatau Mountains — beautiful natural landscapes.",
-            "Байқоңыр": "Baikonur — first spaceport in the world."
-        }
+        kk: { /* короткие описания */ },
+        ru: { /* короткие описания */ },
+        en: { /* короткие описания */ }
     };
 
+    // ===== ДОБАВЛЯЕМ БОЛЬШИЕ ОПИСАНИЯ =====
     const placeDescriptions = {
-        kk: { /* длинные описания, как у тебя в коде */ },
-        ru: { /* длинные описания */ },
-        en: { /* длинные описания */ }
+        kk: {
+            "Алтай таулары": "Алтай таулары — Қазақстанның ең әсем табиғи аймақтарының бірі. Бұл өңір қарлы шыңдарымен, қалың ормандарымен, таза көлдерімен және ерекше флора‑фаунасымен танымал. Туристер мұнда жаяу серуендеу, атпен саяхаттау, тау туризмі және этнотурлармен айналыса алады.",
+            "Бурабай": "Бурабай — табиғаттың нағыз жауһары. Көлдер, қарағай ормандары, ерекше пішіндегі таулар мен таза ауа оны Қазақстандағы ең танымал демалыс орындарының біріне айналдырады.",
+            "Шарын шатқалы": "Шарын шатқалы — миллиондтаған жылдар бойы қалыптасқан табиғи ескерткіш. Ол өзінің қызғылт-қоңыр түсті жартастарымен және ерекше ландшафтымен әйгілі.",
+            "Көлсай көлдері": "Көлсай көлдері — биік тауда орналасқан үш әсем көл. Мұнда табиғат ерекше таза, ал көрініс көздің жауын алады.",
+            "Алматы": "Алматы — Қазақстанның ең ірі мәдени және туристік қаласы. Мұнда табиғат пен заманауи инфрақұрылым үйлесімді үйлескен.",
+            "Көлтаз": "Көлтаз — тыныштық іздейтіндер үшін таптырмас жер. Таза ауа, табиғи көріністер және тыныш атмосфера.",
+            "Астана": "Астана — заманауи сәулетімен көз тартатын қала. Биік ғимараттар, саябақтар және мәдени орталықтар көп.",
+            "Қаратау": "Қаратау таулары — тарихи орындар мен ерекше табиғат аймағы. Геологиялық пішіндерімен танымал.",
+            "Байқоңыр": "Байқоңыр — әлемдегі алғашқы ғарыш айлағы. Мұнда адамзат тарихындағы алғашқы ғарыш сапары басталды."
+        },
+        ru: {
+            "Алтай таулары": "Алтайские горы — одно из красивейших мест Казахстана. Снежные вершины, густые леса и чистейшие озёра привлекают тысячи туристов.",
+            "Бурабай": "Бурабай — жемчужина природы. Горные массивы, сосновые леса и бирюзовые озёра создают неповторимую атмосферу.",
+            "Шарын шатқалы": "Шарынский каньон — уникальное место с древней историей и фантастическими ландшафтами.",
+            "Көлсай көлдері": "Озёра Кольсай — три горных озера с чистой водой и потрясающими видами.",
+            "Алматы": "Алматы — культурный центр Казахстана, город у подножия живописных гор.",
+            "Көлтаз": "Көлтаз — спокойная природная зона, идеальная для отдыха.",
+            "Астана": "Астана славится своей современной архитектурой и зелёными парками.",
+            "Қаратау": "Горы Каратау — место с удивительной природой и историей.",
+            "Байқоңыр": "Байконур — первый космодром мира, связанный с развитием космической отрасли."
+        },
+        en: {
+            "Алтай таулары": "The Altai Mountains are one of Kazakhstan’s most beautiful natural regions, known for snowy peaks, forests, and clear lakes.",
+            "Бурабай": "Burabay is a natural gem with pine forests, lakes, and iconic rock formations.",
+            "Шарын шатқалы": "Charyn Canyon is a unique natural monument with stunning rock formations.",
+            "Көлсай көлдері": "Kolsai Lakes consist of three mountain lakes with crystal-clear water.",
+            "Алматы": "Almaty is Kazakhstan’s cultural heart, located near stunning mountains.",
+            "Көлтаз": "Koltaz is a peaceful natural area perfect for quiet relaxation.",
+            "Астана": "Astana is famous for its modern architecture and beautiful parks.",
+            "Қаратау": "Karatau Mountains feature rich history and unique landscapes.",
+            "Байқоңыр": "Baikonur is the world’s first spaceport with major historical significance."
+        }
     };
 
     const sliderText = {
@@ -75,6 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
         ru: ["Алтайские горы — великолепные природные пейзажи.", "Бурабай — «Маленькая Швейцария» Казахстана.", "Шарынский каньон — природный и исторический памятник."],
         en: ["Altai Mountains — a stunning natural landscape.", "Burabay — Kazakhstan’s ‘Little Switzerland’.", "Charyn Canyon — a natural and historical monument."]
     };
+
+    const slides = [
+        { src: "https://avatars.mds.yandex.net/i?id=447256547577cf1aa1dbe8bfffeb4d43c784662f-4306866-images-thumbs&n=13" },
+        { src: "https://avatars.mds.yandex.net/i?id=88e86dbf49faac72671b826cd8e428f9b42c6c9a-16509561-images-thumbs&n=13" },
+        { src: "https://cdn.nur.kz/images/1200x675/fd1d9d9b2ac051cd.jpeg?version=1" }
+    ];
 
     const headings = {
         kk: { site: "Қазақстандағы Танымал Туристік Орындар", gallery: "Галерея", filter: "Фильтр", slider: "Танымал орындар", fav: "Сүйікті орындар", map: "Қазақстан картасы" },
@@ -123,7 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateFavorites();
 
-    // ==================== ГАЛЕРЕЯ ====================
+    // ==================== ГАЛЕРЕЯ — ОТКРЫТИЕ ВКЛАДКИ ИНФОРМАЦИИ ====================
+    // Создаём модал для просмотра информации (если его нет в HTML)
     let galleryModal = document.getElementById('gallery-modal');
     if (!galleryModal) {
         galleryModal = document.createElement('div');
@@ -158,13 +148,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const imgSrc = placeEl.querySelector('img').src;
         const type = placeEl.dataset.type;
 
-        galleryTitleModal.textContent = placeNames[currentLang][name] || name;
+        galleryTitleModal.textContent = name;
         galleryImg.src = imgSrc;
-        galleryDesc.textContent = placeDescriptions[currentLang][name] || galleryText[currentLang][name] || '';
+        galleryDesc.textContent = placeDescriptions[currentLang][name] || galleryText[currentLang][name][currentLang][name] || '';
         galleryType.textContent = (currentLang === 'kk') ? `Түрі: ${type}` : (currentLang === 'ru') ? `Тип: ${type}` : `Type: ${type}`;
 
         galleryModal.style.display = 'block';
 
+        // Подсветка кнопки добавления в избранное если уже в избранном
         if (favorites.includes(name)) {
             addFavBtn.textContent = (currentLang === 'kk') ? 'Сүйіктіге қосылған' : (currentLang === 'ru') ? 'В избранном' : 'In favorites';
             addFavBtn.disabled = true;
@@ -175,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
             addFavBtn.style.opacity = '1';
         }
 
+        // Установка обработчика для текущего места
         addFavBtn.onclick = () => {
             if (!favorites.includes(name)) {
                 favorites.push(name);
@@ -187,14 +179,17 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
+    // Открывать модал при клике на карточку; прежняя логика добавления в избранное перенесена в кнопку
     places.forEach(place => {
         place.addEventListener('click', () => openGalleryModal(place));
     });
 
+    // Закрытие модала
     if (galleryClose) galleryClose.addEventListener('click', () => galleryModal.style.display = 'none');
     if (closeInfoBtn) closeInfoBtn.addEventListener('click', () => galleryModal.style.display = 'none');
     window.addEventListener('click', e => { if (e.target === galleryModal) galleryModal.style.display = 'none'; });
 
+    // ==================== ИЗБРАННОЕ — УДАЛЕНИЕ ====================
     favList.addEventListener('click', (e) => {
         if (e.target.classList.contains('fav-remove')) {
             const li = e.target.closest('li');
@@ -211,7 +206,8 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
             const type = btn.dataset.type;
             places.forEach(place => {
-                place.style.display = (type === 'all' || type === place.dataset.type) ? 'block' : 'none';
+                const placeType = place.dataset.type;
+                place.style.display = (type === 'all' || type === placeType) ? 'block' : 'none';
             });
         });
     });
@@ -219,6 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================== КАРТА ====================
     const map = L.map('mapid').setView([48.0, 66.9], 5);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
     const markers = [
         { coords: [49.5, 86.0], name: 'Алтай таулары' },
         { coords: [53.0, 71.5], name: 'Бурабай' },
@@ -230,14 +227,15 @@ document.addEventListener('DOMContentLoaded', () => {
         { coords: [43.5, 69.8], name: 'Қаратау' },
         { coords: [45.6, 63.3], name: 'Байқоңыр' }
     ];
-    markers.forEach(m => L.marker(m.coords).addTo(map).bindPopup(placeNames[currentLang][m.name]));
 
-    // ==================== МУЛЬТИЯЗЫК ====================
+    markers.forEach(m => L.marker(m.coords).addTo(map).bindPopup(m.name));
+
+    // ==================== ФУНКЦИИ ЯЗЫКА ====================
     function updateGallery(lang) {
         places.forEach(place => {
             const name = place.dataset.name;
-            place.querySelector('p').textContent = galleryText[lang][name] || '';
-            place.querySelector('img').alt = placeNames[lang][name] || name;
+            const p = place.querySelector('p');
+            p.textContent = galleryText[lang][name] || name;
         });
     }
 
@@ -256,12 +254,16 @@ document.addEventListener('DOMContentLoaded', () => {
         updateAuthors(lang);
         showSlide(slideIndex);
 
+        // Если открыт галерейный модал — обновим его описание и кнопки
         if (galleryModal && galleryModal.style.display === 'block') {
-            const title = galleryTitleModal.textContent;
-            galleryDesc.textContent = placeDescriptions[lang][title] || galleryText[lang][title] || '';
-            addFavBtn.textContent = favorites.includes(title) 
-                ? ((lang === 'kk') ? 'Сүйіктіге қосылған' : (lang === 'ru') ? 'В избранном' : 'In favorites')
-                : ((lang === 'kk') ? 'Сүйіктіге қосу' : (lang === 'ru') ? 'Добавить в избранное' : 'Add to favorites');
+            const title = document.getElementById('gallery-title-modal').textContent;
+            document.getElementById('gallery-desc').textContent = galleryText[lang][title] || '';
+            // Обновим текст кнопки добавления
+            if (favorites.includes(title)) {
+                addFavBtn.textContent = (lang === 'kk') ? 'Сүйіктіге қосылған' : (lang === 'ru') ? 'В избранном' : 'In favorites';
+            } else {
+                addFavBtn.textContent = (lang === 'kk') ? 'Сүйіктіге қосу' : (lang === 'ru') ? 'Добавить в избранное' : 'Add to favorites';
+            }
         }
 
         langButtons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
@@ -271,6 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
     });
 
+    // ==================== АВТОРЫ ====================
     function updateAuthors(lang) {
         const t = authorsText[lang];
         document.getElementById('copyright-text').textContent = t.copyright;
@@ -285,7 +288,85 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('click', e => { if (e.target === authorsModal) authorsModal.style.display = 'none'; });
     }
 
+    // ==================== ИНИЦИАЛИЗАЦИЯ ====================
+    setLanguage(currentLang);
+
     // ==================== ТЕМЫ ====================
     const themes = {
-        dark: { '--bg-color':'#121212','--text-color':'#eee','--header-bg':'#1f1f1f','--header-text':'#fff','--btn-bg':'#333','--btn-active':'#bb86fc','--slider-bg':'#1e1e1e','--slider-text':'#bb86fc','--favorites-bg':'#1e1e1e','--favorites-text':'#bb86fc' },
-        light: { '--bg-color':'#e3f6ff','--text-color':'#222','--header-bg':'
+        dark: {
+            '--bg-color': '#121212',
+            '--text-color': '#eee',
+            '--header-bg': '#1f1f1f',
+            '--header-text': '#fff',
+            '--btn-bg': '#333',
+            '--btn-active': '#bb86fc',
+            '--slider-bg': '#1e1e1e',
+            '--slider-text': '#bb86fc',
+            '--favorites-bg': '#1e1e1e',
+            '--favorites-text': '#bb86fc'
+        },
+        light: {
+            '--bg-color': '#e3f6ff',
+            '--text-color': '#222',
+            '--header-bg': 'linear-gradient(90deg, #009688, #26a69a)',
+            '--header-text': '#fff',
+            '--btn-bg': 'rgba(20,20,35,0.7)',
+            '--btn-active': '#9d4cff',
+            '--slider-bg': '#ffffff',
+            '--slider-text': '#00695c',
+            '--favorites-bg': '#ffffff',
+            '--favorites-text': '#004d40'
+        },
+        ocean: {
+            '--bg-color': '#d0f0fd',
+            '--text-color': '#03396c',
+            '--header-bg': '#0077b6',
+            '--header-text': '#fff',
+            '--btn-bg': '#00b4d8',
+            '--btn-active': '#023e8a',
+            '--slider-bg': '#caf0f8',
+            '--slider-text': '#0077b6',
+            '--favorites-bg': '#ade8f4',
+            '--favorites-text': '#023e8a'
+        },
+        sunset: {
+            '--bg-color': '#fff0e6',
+            '--text-color': '#5c1a00',
+            '--header-bg': '#ff7f50',
+            '--header-text': '#fff',
+            '--btn-bg': '#ffb347',
+            '--btn-active': '#ff4500',
+            '--slider-bg': '#ffe6d9',
+            '--slider-text': '#b34700',
+            '--favorites-bg': '#ffd9b3',
+            '--favorites-text': '#b34700'
+        }
+    };
+
+    function setTheme(themeName) {
+        const theme = themes[themeName];
+        if (!theme) return;
+        for (let key in theme) {
+            document.documentElement.style.setProperty(key, theme[key]);
+        }
+    }
+
+    const themeButtons = document.querySelectorAll('.theme-btn');
+
+    themeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const themeName = btn.dataset.theme;
+            setTheme(themeName);
+
+            // Подсветка активной кнопки
+            themeButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    });
+
+    // Тема по умолчанию
+    const defaultThemeBtn = document.querySelector('.theme-btn[data-theme="dark"]');
+    if (defaultThemeBtn) defaultThemeBtn.classList.add('active');
+    setTheme('dark');
+
+});
