@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "Астана": "Астана — заманауи сәулетімен көз тартатын қала. Биік ғимараттар, саябақтар және мәдени орталықтар көп.",
             "Қаратау": "Қаратау таулары — тарихи орындар мен ерекше табиғат аймағы. Геологиялық пішіндерімен танымал.",
             "Байқоңыр": "Байқоңыр — әлемдегі алғашқы ғарыш айлағы. Мұнда адамзат тарихындағы алғашқы ғарыш сапары басталды.",
-            "Медеу": "Медеу - танымал тау шаңғысы аймағы және ашық каток."
+            "Медеу": "Медеу - танымал тау шаңғысы аймағы және ашық каток.",
+            "Капшагай": "Капшагай – суда демалыс және балық аулау орны."
         },
         ru: {
             "Алтай таулары": "Алтайские горы — одно из красивейших мест Казахстана. Снежные вершины, густые леса и чистейшие озёра привлекают тысячи туристов.",
@@ -40,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "Астана": "Астана славится своей современной архитектурой и зелёными парками.",
             "Қаратау": "Горы Каратау — место с удивительной природой и историей.",
             "Байқоңыр": "Байконур — первый космодром мира, связанный с развитием космической отрасли.",
-            "Медеу": "Медеу – популярный горнолыжный курорт и открытый каток."
+            "Медеу": "Медеу – популярный горнолыжный курорт и открытый каток.",
+            "Капшагай": "Капшагай – место для отдыха у воды и рыбалки."
         },
         en: {
             "Алтай таулары": "The Altai Mountains are one of Kazakhstan’s most beautiful natural regions, known for snowy peaks, forests, and clear lakes.",
@@ -52,7 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "Астана": "Astana is famous for its modern architecture and beautiful parks.",
             "Қаратау": "Karatau Mountains feature rich history and unique landscapes.",
             "Байқоңыр": "Baikonur is the world’s first spaceport with major historical significance.",
-            "Медеу": "Medeu a famous mountain ski area and open-air skating rink."
+            "Медеу": "Medeu a famous mountain ski area and open-air skating rink.",
+            "Капшагай": "Kapshagai – a spot for water recreation and fishing."
         }
     };
 
