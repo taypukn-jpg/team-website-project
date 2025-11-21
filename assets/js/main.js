@@ -32,7 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "Капшагай": "Капшагай – суда демалыс және балық аулау орны.",
             "Актау": "Актау – ақ таулар мен керемет ландшафт.",
             "Жетысу": "Жетысу – таулы аймақтағы әдемі көлдер.",
-             "Тянь-Шань": "Тянь-Шань – биік шыңдар мен треккинг жолдары."
+            "Тянь-Шань": "Тянь-Шань – биік шыңдар мен треккинг жолдары.",
+            "Боровое": "Боровое – орман, көлдер және әдемі жартас."
         },
         ru: {
             "Алтай таулары": "Алтайские горы — одно из красивейших мест Казахстана. Снежные вершины, густые леса и чистейшие озёра привлекают тысячи туристов.",
@@ -48,7 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
             "Капшагай": "Капшагай – место для отдыха у воды и рыбалки.",
             "Актау": "Актау – белые скалы и живописные пейзажи.",
             "Жетысу": "Жетысу – красивые горные озера.",
-            "Тянь-Шань": "Тянь-Шань – высокие вершины и треккинг маршруты."
+            "Тянь-Шань": "Тянь-Шань – высокие вершины и треккинг маршруты.",
+            "Боровое": "Боровое – лес, озёра и красивые скалы."
+
         },
         en: {
             "Алтай таулары": "The Altai Mountains are one of Kazakhstan’s most beautiful natural regions, known for snowy peaks, forests, and clear lakes.",
@@ -64,7 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "Капшагай": "Kapshagai – a spot for water recreation and fishing.",
             "Актау": "Aktau – white cliffs and stunning landscapes.",
             "Жетысу": "Zhetysu Lakes – beautiful mountain lakes.",
-            "Тянь-Шань": "Tian Shan – high peaks and trekking routes."
+            "Тянь-Шань": "Tian Shan – high peaks and trekking routes.",
+            "Боровое": "Borovoe – forests, lakes, and beautiful cliffs."
         }
     };
 
